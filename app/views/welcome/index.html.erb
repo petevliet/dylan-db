@@ -1,1 +1,6 @@
-hello:)
+<ul>
+  <% @titles.each do |album| %>
+    <li> <%= album %> </li>
+  <% end %>
+</ul>
+<%= @dylan_albums["data"][0] %>
