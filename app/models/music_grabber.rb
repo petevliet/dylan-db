@@ -12,7 +12,6 @@ class MusicGrabber
     response = @conn.get do |req|
       req.url "v1/api/artists/ar3782/albums?"
       req.params['client_id'] = ENV['BEATS_API_KEY']
-      # req.headers['Content-Type'] = 'application/json'
     end
   end
 
