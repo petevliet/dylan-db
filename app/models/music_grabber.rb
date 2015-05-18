@@ -23,6 +23,8 @@ class MusicGrabber
       req.url "v1/api/albums/#{album_name}?"
       req.params['client_id'] = ENV['BEATS_API_KEY']
     end
+
+    his_albums = JSON.parse(response.body)
   end
 
 end

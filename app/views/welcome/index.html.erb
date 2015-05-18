@@ -1,6 +1,5 @@
 <ul>
-  <% @titles.each do |album| %>
-    <li> <%= album %> </li>
+  <% @albums.each do |album| %>
+    <li> <%= link_to album["title"], albums_path(query: album["id"]) %> </li>
   <% end %>
 </ul>
-<%= @dylan_albums["data"][0] %>
