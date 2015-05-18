@@ -1,5 +1,5 @@
 <ul>
   <% @albums.each do |album| %>
-    <li> <%= link_to album["title"], albums_path(query: album["id"]) %> </li>
+    <li> <%= link_to album.title, albums_path(query: album.album_id) %> </li>
   <% end %>
 </ul>
