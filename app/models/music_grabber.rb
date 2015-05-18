@@ -34,8 +34,10 @@ class MusicGrabber
     end
 
     dylan_album = JSON.parse(response.body)
-    # dylan_album["data"]["refs"]["tracks"].each do |new_album_info|
-    #   album_info = Track.new
+    dylan_album["data"]["refs"]["tracks"].each do |new_album_info|
+      track_info = Track.new
+      track_info.title = new_album_info["display"]
+      track_info.duration = new_album_info[]
   end
 
 end
