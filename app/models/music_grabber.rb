@@ -21,7 +21,7 @@ class MusicGrabber
       new_dylan_album.title = new_album["title"]
       new_dylan_album.release_date = new_album["release_date"]
       # new_dylan_album.tracks = new_album["tracks"].length
-      new_dylan_album.album_id = new_album["id"]
+      new_dylan_album.album_num = new_album["id"]
       new_dylan_album.save
     end
 
@@ -38,7 +38,8 @@ class MusicGrabber
       track_info = Track.new
       track_info.title = new_album_info["display"]
       track_info.track_id = new_album_info["id"]
-      track_info.album_id = params[:query]
+      track_info.album_id = Album.find(params[:id])
+    end
   end
 
 end
