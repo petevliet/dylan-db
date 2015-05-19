@@ -38,7 +38,8 @@ class MusicGrabber
       track_info = Track.new
       track_info.title = new_album_info["display"]
       track_info.track_id = new_album_info["id"]
-      track_info.album_id = Album.find(params[:id])
+      track_info.album_id = Album.find_by(album_num: dylan_album["data"]["id"]).id
+      track_info.save
     end
   end
 
