@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
-  resources :albums
+  resources :albums do
+    resources :tracks
+  end
 end

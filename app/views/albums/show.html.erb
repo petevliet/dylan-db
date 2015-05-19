@@ -2,6 +2,6 @@
 
 <ul>
   <% @album.tracks.each do |track| %>
-    <li> <%= link_to track.title,  %> </li>
+    <li> <%= link_to track.title, album_track_path(@album, track)  %> </li>
   <% end %>
 </ul>
