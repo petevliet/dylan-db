@@ -37,7 +37,8 @@ class MusicGrabber
     dylan_album["data"]["refs"]["tracks"].each do |new_album_info|
       track_info = Track.new
       track_info.title = new_album_info["display"]
-      track_info.duration = new_album_info[]
+      track_info.track_id = new_album_info["id"]
+      track_info.album_id = params[:query]
   end
 
 end
