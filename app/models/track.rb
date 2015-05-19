@@ -1,3 +1,4 @@
 class Track < ActiveRecord::Base
 
-end  
+  belongs_to :album
+end
