@@ -10,6 +10,7 @@ class AlbumsController < ApplicationController
       @dylan_lookup = MusicGrabber.new
       @dylan_lookup.get_album(@album.album_num)
     end
+    @album_tracks = @album.tracks.order(:track_id)
   end
 
 end

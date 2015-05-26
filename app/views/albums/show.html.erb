@@ -1,7 +1,7 @@
 <h1> <%= @album.title %></h1>
 
 <ul>
-  <% @album.tracks.each do |track| %>
+  <% @album_tracks.each do |track| %>
     <li> <%= link_to track.title, album_track_path(@album, track)  %> </li>
   <% end %>
 </ul>
