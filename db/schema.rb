@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524182126) do
+ActiveRecord::Schema.define(version: 20150526202543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150524182126) do
     t.string  "track_id"
     t.integer "album_id"
     t.text    "lyrics"
+    t.text    "verses",   default: [], array: true
   end
 
 end
