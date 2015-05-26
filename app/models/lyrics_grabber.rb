@@ -23,6 +23,11 @@ class LyricsGrabber
     # replace newspace markup with close->open p tags so lyrics can be displayed properly
     @lyrics = lyrics_raw.split("\n").join("</p><p>")
     track.lyrics = @lyrics
+    verse_split = @lyrics.split("[Verse ")
+      verse_split.delete_if {|verse_element| verse_element.empty?}
+    verse_split.each do |verse|
+      track.verses << verse
+    end
     binding.pry
     track.save
   end
