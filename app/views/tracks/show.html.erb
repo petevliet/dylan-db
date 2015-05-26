@@ -1,3 +1,4 @@
 <h1> <%= @track.title %> </h1>
+<h4><em><%= @track.album.title %></em>, <%= @album_year %></h4>
 
-<p><%= @lyrics %></p>
+<p><%= @track.lyrics.html_safe %></p>
