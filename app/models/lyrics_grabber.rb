@@ -12,7 +12,7 @@ class LyricsGrabber
       song_title = track.title
     end
     songs = RapGenius.search_by_title(song_title)
-    # RapGenius query returns songs from different artists, make sure only Dylan's versions show
+    # RapGenius query returns songs from different artists, make sure only Dylan's version shows
     dylan_version = []
     songs.each do |s|
       if s.artist.name == "Bob Dylan"
@@ -23,12 +23,12 @@ class LyricsGrabber
     # replace newspace markup with close->open p tags so lyrics can be displayed properly
     @lyrics = lyrics_raw.split("\n").join("</p><p>")
     track.lyrics = @lyrics
+    # split lyrics text into verses and save it in track.verses array
     verse_split = @lyrics.split("[Verse ")
       verse_split.delete_if {|verse_element| verse_element.empty?}
     verse_split.each do |verse|
       track.verses << verse
     end
-    binding.pry
     track.save
   end
 

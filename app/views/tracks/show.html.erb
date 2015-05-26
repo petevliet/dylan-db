@@ -1,4 +1,6 @@
 <h1> <%= @track.title %> </h1>
 <h4><em><%= @track.album.title %></em>, <%= @album_year %></h4>
 
-<p><%= @track.lyrics.html_safe %></p>
+<% @track.verses.each do |verse| %>
+  [Verse <%= verse.html_safe %>
+<% end %>
