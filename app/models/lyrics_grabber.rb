@@ -14,21 +14,31 @@ class LyricsGrabber
     songs = RapGenius.search_by_title(song_title)
     # RapGenius query returns songs from different artists, make sure only Dylan's version shows
     dylan_version = []
-    songs.each do |s|
-      if s.artist.name == "Bob Dylan"
-        dylan_version << s
+    songs.each do |song|
+      if song.artist.name == "Bob Dylan"
+        dylan_version << song
       end
     end
     lyrics_raw = dylan_version[0].response["lyrics"]["plain"]
     # replace newspace markup with close->open p tags so lyrics can be displayed properly
-    @lyrics = lyrics_raw.split("\n").join("</p><p>")
-    track.lyrics = @lyrics
+    # also, if there are chorus tags, put 'verse' in front of first one so upcoming verse split works properly
+    lyrics_html = lyrics_raw.split("\n").join("</p><p>").sub("[Chorus]", "[Verse Chorus]")
+    track.lyrics = lyrics_html
     # split lyrics text into verses and save it in track.verses array
-    verse_split = @lyrics.split("[Verse ")
+    verse_split = lyrics_html.split("[Verse ")
       verse_split.delete_if {|verse_element| verse_element.empty?}
     verse_split.each do |verse|
       verse.prepend("[Verse ")
       track.verses << verse
+    end
+    # if lyrics include a tagged chorus, the first chorus' contents must be preserved while subsequent chorus tags removed from lyrics so lyrics can be properly commented upon.
+    if track.lyrics.include?("Chorus]")
+      first_chorus_index = track.verses.index{|verse| verse.include?("Chorus")}
+      chorus = track.verses.slice!(first_chorus_index)
+      track.verses.each {|verse| verse.slice!("[Chorus]")}
+      track.verses.insert(first_chorus_index, chorus)
+      track.verses[first_chorus_index].sub("[Verse Chorus]", "[Chorus]")
+      binding.pry
     end
     track.save
   end
