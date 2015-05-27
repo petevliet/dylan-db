@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   def new
     @album = Album.find(params[:album_id])
     @track = Track.find(params[:track_id])
+    @verse = params[:verse].to_i
     @comment = Comment.new
   end
 
@@ -18,7 +19,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:user_id, :track_id, :annotation, :created_at)
+    params.require(:comment).permit(:user_id, :track_id, :annotation, :created_at, :verse)
   end
 
 end
