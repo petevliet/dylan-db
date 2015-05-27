@@ -1,5 +1,7 @@
-<h1> <%= @track.title %> </h1>
-<h4><em><%= @track.album.title %></em>, <%= @album_year %></h4>
+<h1><%= @track.title %></h1>
+<h4>
+  <em><%= @track.album.title %></em>, <%= @album_year %>
+</h4>
 
 <% @track.verses.each_with_index do |section, index| %>
   <%= link_to section.html_safe, new_album_track_comment_path(@track.album, @track, verse: index + 1) %>
