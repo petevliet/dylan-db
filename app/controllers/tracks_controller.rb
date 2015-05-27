@@ -7,6 +7,7 @@ class TracksController < ApplicationController
       @lyric_getter.get_lyrics(@track)
     end
     @album_year = @track.album.release_date.strftime("%Y")
+    @comments = Comment.where(track_id: @track.id)
   end
 
 end

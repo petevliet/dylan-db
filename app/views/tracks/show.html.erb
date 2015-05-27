@@ -4,3 +4,10 @@
 <% @track.verses.each_with_index do |section, index| %>
   <%= link_to "[Verse #{section}".html_safe, new_album_track_comment_path(@track.album, @track, verse: index + 1) %>
 <% end %>
+
+<br>
+<ul>
+  <% @comments.each do |comment| %>
+    <li> <%= "#{comment.annotation}, #{comment.user}" %></li>
+  <% end %>
+</ul>
