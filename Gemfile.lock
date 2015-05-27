@@ -37,6 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    bcrypt (3.1.10)
     beats-client (0.3.4)
       json_pure
       multi_json
@@ -179,6 +180,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   beats-client
   byebug
   coffee-rails (~> 4.1.0)
