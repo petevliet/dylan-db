@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
   def new
+    @album = Album.find(params[:album_id])
+    @track = Track.find(params[:track_id])
     @comment = Comment.new
   end
 

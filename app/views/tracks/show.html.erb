@@ -2,5 +2,5 @@
 <h4><em><%= @track.album.title %></em>, <%= @album_year %></h4>
 
 <% @track.verses.each do |verse| %>
-  [Verse <%= verse.html_safe %>
+  <%= link_to "[Verse #{verse}".html_safe, new_album_track_comment_path(@track.album, @track) %>
 <% end %>
