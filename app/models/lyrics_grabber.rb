@@ -27,6 +27,7 @@ class LyricsGrabber
     verse_split = @lyrics.split("[Verse ")
       verse_split.delete_if {|verse_element| verse_element.empty?}
     verse_split.each do |verse|
+      verse.prepend("[Verse ")
       track.verses << verse
     end
     track.save
