@@ -73,8 +73,20 @@
   font-size: 1.1em;
  }
 
- .img-footer {
+.img-footer {
   max-width: 1.5em;
   max-height: 1.5em;
   margin-right: .25em;
+}
+
+.well-albums-index {
+  float: right;
+  width: 75%;
+}
+
+.album-box {
+  position: relative;
+  display: inline-block;
+  width: 24%;
+  text-align: center;
 }
