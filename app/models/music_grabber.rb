@@ -43,13 +43,4 @@ class MusicGrabber
     end
   end
 
-  def get_artwork(album_id)
-    response = @conn.get do |req|
-      req.url "v1/api/albums/#{album_id}/images/default?"
-      req.params['client_id'] = ENV['BEATS_API_KEY']
-    end
-
-    album_image = JSON.parse(response.body)
-  end
-
 end

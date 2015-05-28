@@ -1,7 +1,8 @@
-<h1> <%= @album.title %></h1>
+<h1><%= @album.title %></h1>
+<%= image_tag(@album.image_url) %>
 
 <ul>
   <% @album_tracks.each do |track| %>
-    <li> <%= link_to track.title, album_track_path(@album, track)  %> </li>
+    <li><%= link_to track.title, album_track_path(@album, track) %></li>
   <% end %>
 </ul>
