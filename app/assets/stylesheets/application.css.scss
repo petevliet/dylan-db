@@ -79,9 +79,15 @@
   margin-right: .25em;
 }
 
-.well-albums-index {
+.well-albums-container {
+  text-align: center;
   float: right;
   width: 75%;
+}
+
+.well-albums-index {
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 .album-box {

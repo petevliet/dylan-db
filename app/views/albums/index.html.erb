@@ -1,16 +1,24 @@
 <h1>Albums</h1>
-<br>
 <input type="hidden" id="current_page" />
 <input type="hidden" id="show_per_page" />
 
-<div class="well well-lg well-albums-index">
-  <% @albums.each do |album| %>
-  <div class="panel panel-default album-box">
-    <div class="panel-heading"><%= link_to album.title, album_path(album) %></div>
-    <div class="panel-body">
-      <%= image_tag(album.image_url, size: "160x160") %>
-    </div>
+<div class="well-albums-container">
+  <ul class="pagination">
+    <li class="disabled"><a href="#">«</a></li>
+    <li class="active"><a href="#">1</a></li>
+    <% (2..@show_pages).each do |i| %>
+      <li><a href="#"> <%= i %> </a></li>
+    <% end %>
+    <li><a href="#">»</a></li>
+  </ul>
+  <div class="well well-lg well-albums-index">
+    <% @albums.each do |album| %>
+      <div class="panel panel-default album-box">
+        <div class="panel-heading"><%= link_to album.title, album_path(album) %></div>
+        <div class="panel-body">
+          <%= image_tag(album.image_url, size: "160x160") %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
-<div id="page_navigation"></div>
