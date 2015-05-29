@@ -13,7 +13,9 @@
           Collection and discussion of the 20th century's greatest singer-songwriter's lyrics
           <br>
           <br>
-          Sign up with Twitter to join the argument
+          <% if session[:user_id] == nil %>
+            <%= link_to "Sign in with Twitter", "/auth/twitter" %> to join the argument
+          <% end %>
         </h4>
         <br>
         <%= link_to 'Albums', albums_path, class: 'btn btn-default' %>
