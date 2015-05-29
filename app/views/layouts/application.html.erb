@@ -34,7 +34,11 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Sign In with Twitter", "/auth/twitter" %></li>
+        <% if session[:user_id] == nil %>
+          <li><%= link_to "Sign In with Twitter", "/auth/twitter" %></li>
+        <% else %>
+          <li><%= link_to "Log Out", "/logout" %></li>
+        <% end %>
       </ul>
     </div>
   </div>
