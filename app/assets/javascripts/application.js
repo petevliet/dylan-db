@@ -20,7 +20,7 @@ $(document).ready(function(){
   var show_per_page = 12;
   // number of total albums set to display
   var number_of_albums = $(".well-albums-index").children().size();
-  // number of pages there will be
+  // number of pages there will be, plus one because #current_page starts on 1
   var number_of_pages = Math.ceil(number_of_albums/show_per_page + 1);
   // set to first page- value will be hidden in html
   $("#current_page").val(1);
