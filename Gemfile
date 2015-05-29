@@ -31,6 +31,9 @@ gem 'pry-rails'
 gem 'bcrypt', '~> 3.1.7'
 # sass bootstrap gem
 gem 'bootstrap-sass', '~> 3.3.4'
+# Sign in with twitter
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
