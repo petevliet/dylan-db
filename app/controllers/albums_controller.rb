@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
 
   def index
     @albums = Album.all.order(:release_date)
-    @show_pages = @albums.count / 12
+    @show_pages = @albums.count / 12 + 1
     # @albums.each do |record|
     #   record.image_url = "https://partner.api.beatsmusic.com/v1/api/albums/#{record.album_num}/images/default?client_id=#{ENV['BEATS_API_KEY']}"
     #   record.save

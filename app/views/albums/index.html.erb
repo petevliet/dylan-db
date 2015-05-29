@@ -4,7 +4,7 @@
 
 <div class="well-albums-container">
   <ul class="pagination">
-    <li class="disabled" id="back"><a href="#">«</a></li>
+    <li class="disabled" id="previous"><a href="#">«</a></li>
     <li class="active" id="1"><a href="#">1</a></li>
     <% (2..@show_pages).each do |i| %>
       <li id=<%= "#{i}" %>><a href="#"> <%= i %> </a></li>
