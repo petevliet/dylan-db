@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
+
+  get '/auth/twitter/callback', to: 'sessions#create'
 end
