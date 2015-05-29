@@ -15,34 +15,44 @@
 //= require bootstrap-sprockets
 //= require_tree .
 $(document).ready(function(){
+
+  // number albums want to display
   var show_per_page = 12;
+  // number of total albums set to display
   var number_of_albums = $(".well-albums-index").children().size();
+  // number of pages there will be
   var number_of_pages = Math.ceil(number_of_albums/show_per_page);
+  // set to first page- value will be hidden in html
   $("#current_page").val(0);
   $("#show_per_page").val(show_per_page);
 
-  var navigation_html = '<a class="previous_link" href="javascript:previous();">Prev</a>';
-  var current_link = 0;
-  while(number_of_pages > current_link){
-    navigation_html += '<a class="page_link" href="javascript:go_to_page(' + current_link +')" longdesc="' + current_link +'">'+ (current_link + 1) +'</a>';
-    current_link ++;
+  $('#2').on("click", function(){
+    console.log('yo');
+  });
+
+  // page number 1 is default active page
+  $('#1').addClass('active_page');
+  // initially, make all albums hidden
+  $('.well-albums-index').children().css("display", "none");
+  // then, show only the first albums in the per page range
+  $('.well-albums-index').children().slice(0, show_per_page).css("display", "inline-block");
+  // for all page# pagination icons, run go_to_page when clicked on
+  for(var x = 1; x < number_of_pages; x++){
+    $("#" + x).on("click", function(e){
+      go_to_page(parseInt(this.id));
+    });
   }
-  navigation_html += '<a class="next_link" href="javascript:next();">Next</a>';
-  $('#page_navigation').html(navigation_html);
-  $('#page_navigation .page_link:first').addClass('active_page');
-  $('.well-albums-index').children().css('display', 'none');
-  $('.well-albums-index').children().slice(0, show_per_page).css('display', 'inline-block');
 
   function previous(){
     new_page = parseInt($('#current_page').val()) - 1;
-    if($('.active_page').prev('.page_link').length==true){
+    if (parseInt($('#current_page').val()) > 0){
       go_to_page(new_page);
     }
   }
 
   function next(){
     new_page = parseInt($('#current_page').val()) + 1;
-    if($('.active_page').next('.page_link').length==true){
+    if (parseInt($('#current_page').val()) < number_of_pages){
       go_to_page(new_page);
     }
   }
@@ -51,8 +61,8 @@ $(document).ready(function(){
     var show_per_page = parseInt($('#show_per_page').val());
     start_from = page_num * show_per_page;
     end_on = start_from + show_per_page;
-    $('#content').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');
-    $('.page_link[longdesc=' + page_num +']').addClass('active_page').siblings('.active_page').removeClass('active_page');
+    $('.well-albums-index').children().hide().slice(start_from, end_on).show();
+    $('#' + page_num).addClass('active').siblings('.active').removeClass('active');
     $('#current_page').val(page_num);
   }
 });

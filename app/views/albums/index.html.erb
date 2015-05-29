@@ -4,12 +4,12 @@
 
 <div class="well-albums-container">
   <ul class="pagination">
-    <li class="disabled"><a href="#">«</a></li>
-    <li class="active"><a href="#">1</a></li>
+    <li class="disabled" id="back"><a href="#">«</a></li>
+    <li class="active" id="1"><a href="#">1</a></li>
     <% (2..@show_pages).each do |i| %>
-      <li><a href="#"> <%= i %> </a></li>
+      <li id=<%= "#{i}" %>><a href="#"> <%= i %> </a></li>
     <% end %>
-    <li><a href="#">»</a></li>
+    <li id="next"><a href="#">»</a></li>
   </ul>
   <div class="well well-lg well-albums-index">
     <% @albums.each do |album| %>
