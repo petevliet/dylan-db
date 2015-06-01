@@ -37,6 +37,7 @@ $(document).ready(function(e){
       go_to_page(parseInt(this.id));
     });
   }
+  $("#albums_count").append("<center>Showing albums 1 - 12 of " + number_of_albums + "</center>");
 
   $("#previous").on("click", function(){
     previous();
@@ -62,8 +63,9 @@ $(document).ready(function(e){
 
   function go_to_page(page_num){
     // var show_per_page = parseInt($("#show_per_page").val());
-    start_from = (page_num - 1) * show_per_page;
-    end_on = start_from + show_per_page;
+    var start_from = (page_num - 1) * show_per_page;
+    var end_on = start_from + show_per_page;
+    // $("#albums_count").empty();
     $(".well-albums-index").children().hide().slice(start_from, end_on).slideDown(800);
     $('body, .well-albums-container').animate({
       scrollTop: $("#albums").offset().top
@@ -77,8 +79,10 @@ $(document).ready(function(e){
       $("#previous").removeClass("disabled");
     }
     if (parseInt($("#current_page").val()) === number_of_pages - 1){
+      $("#albums_count").replaceWith("<div id='albums_count'><center>Showing albums " + (start_from + 1) + " - " + number_of_albums + " of " + number_of_albums + "</center></div>");
       $("#next").addClass("disabled");
     }else{
+      $("#albums_count").replaceWith("<div id='albums_count'><center>Showing albums " + (start_from + 1) + " - " + (end_on) + " of " + number_of_albums + "</center></div>");
       $("#next").removeClass("disabled");
     }
 
