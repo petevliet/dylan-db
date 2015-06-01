@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
-$(document).ready(function(){
+$(document).ready(function(e){
 
   // number albums want to display
   var show_per_page = 12;
@@ -64,7 +64,11 @@ $(document).ready(function(){
     // var show_per_page = parseInt($("#show_per_page").val());
     start_from = (page_num - 1) * show_per_page;
     end_on = start_from + show_per_page;
-    $(".well-albums-index").children().hide().slice(start_from, end_on).show();
+    $(".well-albums-index").children().hide().slice(start_from, end_on).slideDown(800);
+    $('body, .well-albums-container').animate({
+      scrollTop: $("#albums").offset().top
+    }, 1600);
+    $('.well-albums-index').animate({scrollTop: "0px"}, 700);
     $("#" + page_num).addClass("active").siblings(".active").removeClass("active");
     $("#current_page").val(page_num);
     if (parseInt($("#current_page").val()) === 1) {
@@ -77,8 +81,6 @@ $(document).ready(function(){
     }else{
       $("#next").removeClass("disabled");
     }
-    $('html, body').animate({
-      scrollTop: $("#albums").offset().top
-      }, 1000);
+
   }
 });
