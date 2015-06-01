@@ -4,7 +4,9 @@ class AlbumsController < ApplicationController
     @albums = Album.all.order(:release_date)
     @show_pages = @albums.count / 12 + 1
     # @albums.each do |record|
-    #   record.image_url = "https://partner.api.beatsmusic.com/v1/api/albums/#{record.album_num}/images/default?client_id=#{ENV['BEATS_API_KEY']}"
+    #   url = URI.parse(record.image_url)
+    #   res = Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') {|http| http.get(url.request_uri)}
+    #   record.image_url = res['location']
     #   record.save
     # end
   end
