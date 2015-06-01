@@ -47,15 +47,15 @@ $(document).ready(function(){
   });
 
   function previous(){
-    new_page = parseInt($("#current_page").val()) - 1;
-    if (parseInt($("#current_page").val()) > 0){
+    if (!$("#previous").hasClass("disabled")){
+      new_page = parseInt($("#current_page").val()) - 1;
       go_to_page(new_page);
     }
   }
 
   function next(){
-    new_page = parseInt($("#current_page").val()) + 1;
-    if (parseInt($("#current_page").val()) < number_of_pages){
+    if (!$("#next").hasClass("disabled")){
+      new_page = parseInt($("#current_page").val()) + 1;
       go_to_page(new_page);
     }
   }
