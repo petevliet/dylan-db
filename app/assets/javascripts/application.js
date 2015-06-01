@@ -77,5 +77,8 @@ $(document).ready(function(){
     }else{
       $("#next").removeClass("disabled");
     }
+    $('html, body').animate({
+      scrollTop: $("#albums").offset().top
+      }, 1000);
   }
 });
