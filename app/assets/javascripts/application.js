@@ -37,7 +37,7 @@ $(document).ready(function(e){
       go_to_page(parseInt(this.id));
     });
   }
-  // 
+  // append album count above pagination icons
   $("#albums_count").append("<center>Showing albums 1 - 12 of " + number_of_albums + "</center>");
 
   $("#previous").on("click", function(){
@@ -47,22 +47,26 @@ $(document).ready(function(e){
   $("#next").on("click", function(){
     next();
   });
-
+  // narrow search according to checkboxes on albums#index when 'narrow' button clicked
   $("#narrow-search").on("click", function(){
     var checkedBoxes = $(".checkbox").find(":checkbox").filter(":checked");
     var albumBoxes = $(".well-albums-index").children()
+    // integer to be used for album count text
     var numAlbums = 0;
     albumBoxes.hide();
     // for any years checked, albums released only in those years
     if ($('#years').find(":checkbox").filter(":checked").length > 0){
+      // for each checked box, iterate through each albumBox
       $(checkedBoxes).each(function(i, years){
         $(albumBoxes).each(function(i, el){
+          // if album year falls within checkedBox range, show it
           if(parseInt($(el).data('year-released')) >= parseInt($(years).val()) && parseInt($(el).data('year-released')) < parseInt($(years).val()) + 10){
             $(el).show();
             numAlbums ++;
           }
         });
       });
+      // results will be shown in one well container
       $(".pagination").remove();
       $("#albums_count").replaceWith("<div id='albums_count'><center>Showing albums 1 - " + numAlbums + " of " + numAlbums + "</center></div>");
       $('body, .well-albums-container').animate({
