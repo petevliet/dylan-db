@@ -62,10 +62,8 @@ $(document).ready(function(e){
   }
 
   function go_to_page(page_num){
-    // var show_per_page = parseInt($("#show_per_page").val());
     var start_from = (page_num - 1) * show_per_page;
     var end_on = start_from + show_per_page;
-    // $("#albums_count").empty();
     $(".well-albums-index").children().hide().slice(start_from, end_on).slideDown(800);
     $('body, .well-albums-container').animate({
       scrollTop: $("#albums").offset().top
