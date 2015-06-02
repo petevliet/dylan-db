@@ -47,6 +47,8 @@ $(document).ready(function(e){
     next();
   });
 
+  $("input.6270")
+
   function previous(){
     if (!$("#previous").hasClass("disabled")){
       new_page = parseInt($("#current_page").val()) - 1;

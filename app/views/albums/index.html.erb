@@ -12,9 +12,9 @@
           <div class="col-md-10">
             <b>Album Type</b>
               <ul>
+                <li><input type='checkbox' value='Bootleg'>Bootleg Series</input></li>
                 <li><input type='checkbox' value='Compilations'>Compilations</input></li>
                 <li><input type='checkbox' value='Live'>Live Albums</input></li>
-                <li><input type='checkbox' value='Bootleg'>Bootleg Series</input></li>
                 <li><input type='checkbox' value='Studio'>Studio Albums</input></li>
               </ul>
             <b>Year Released</b>
@@ -25,6 +25,8 @@
                 <li><input type='checkbox' value='9099'>1990-1999</input></li>
                 <li><input type='checkbox' value='0015'>2000-</input></li>
               </ul>
+            <br>
+            <center><a id="narrow-search" class="btn btn-info btn-xs">Narrow Search</a></center>
           </div>
         </div>
       </div>
@@ -35,7 +37,7 @@
 <div class="well-albums-container"><a id="albums"></a>
   <div class="well well-albums-index">
     <% @albums.each do |album| %>
-      <div class="panel panel-default album-box">
+      <div data-year-released="<%= album.release_date.strftime('%Y') %>" class="panel panel-default album-box">
         <div class="panel-heading"><%= link_to album.title, album_path(album) %></div>
         <div class="panel-body">
           <%= image_tag(album.image_url, size: "160x160") %>
