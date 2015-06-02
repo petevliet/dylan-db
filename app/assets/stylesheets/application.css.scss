@@ -80,10 +80,14 @@
 }
 
 .well-albums-container {
-  margin-top: 400px;
   text-align: center;
   float: right;
   width: 75%;
+}
+
+.well-sorting-container {
+  float: left;
+  width: 25%;
 }
 
 .well-albums-index {
@@ -99,10 +103,8 @@
   text-align: center;
 }
 
-.albums_index {
+.albums-index {
     height: 400px;
     background-image: url("http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/2/21/1392991666451/Bob-Dylan-in-1963-014.jpg");
     background-size: cover;
-    // opacity: 0.6;
-    // padding-bottom: 3em;
 }
