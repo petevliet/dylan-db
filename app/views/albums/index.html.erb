@@ -1,10 +1,35 @@
 <h1>Albums</h1>
 <input type="hidden" id="current_page" />
 <input type="hidden" id="show_per_page" />
-<div class="albums-index">
+<div class="albums-index" id="flash">
 </div>
-<div class= "well well-sorting-container">
-  <h4>Sort albums</h4>
+<div class="well well-sorting-container">
+  <h4>Narrow List</h4>
+  <div class="form">
+    <div class="form-group">
+      <div class="checkbox">
+        <div class="row">
+          <div class="col-md-10">
+            <b>Album Type</b>
+              <ul>
+                <li><input type='checkbox' value='Compilations'>Compilations</input></li>
+                <li><input type='checkbox' value='Live'>Live Albums</input></li>
+                <li><input type='checkbox' value='Bootleg'>Bootleg Series</input></li>
+                <li><input type='checkbox' value='Studio'>Studio Albums</input></li>
+              </ul>
+            <b>Year Released</b>
+              <ul>
+                <li><input type='checkbox' value='6270'>1962-1970</input></li>
+                <li><input type='checkbox' value='7179'>1971-1979</input></li>
+                <li><input type='checkbox' value='8089'>1980-1989</input></li>
+                <li><input type='checkbox' value='9099'>1990-1999</input></li>
+                <li><input type='checkbox' value='0015'>2000-</input></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="well-albums-container"><a id="albums"></a>
