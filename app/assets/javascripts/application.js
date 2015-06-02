@@ -37,6 +37,7 @@ $(document).ready(function(e){
       go_to_page(parseInt(this.id));
     });
   }
+  // 
   $("#albums_count").append("<center>Showing albums 1 - 12 of " + number_of_albums + "</center>");
 
   $("#previous").on("click", function(){
@@ -47,7 +48,30 @@ $(document).ready(function(e){
     next();
   });
 
-  $("input.6270")
+  $("#narrow-search").on("click", function(){
+    var checkedBoxes = $(".checkbox").find(":checkbox").filter(":checked");
+    var albumBoxes = $(".well-albums-index").children()
+    var numAlbums = 0;
+    albumBoxes.hide();
+    // for any years checked, albums released only in those years
+    if ($('#years').find(":checkbox").filter(":checked").length > 0){
+      $(checkedBoxes).each(function(i, years){
+        $(albumBoxes).each(function(i, el){
+          if(parseInt($(el).data('year-released')) >= parseInt($(years).val()) && parseInt($(el).data('year-released')) < parseInt($(years).val()) + 10){
+            $(el).show();
+            numAlbums ++;
+          }
+        });
+      });
+      $(".pagination").remove();
+      $("#albums_count").replaceWith("<div id='albums_count'><center>Showing albums 1 - " + numAlbums + " of " + numAlbums + "</center></div>");
+      $('body, .well-albums-container').animate({
+        scrollTop: $("#albums").offset().top
+      }, 1600);
+    }else{
+      location.reload();
+    };
+  });
 
   function previous(){
     if (!$("#previous").hasClass("disabled")){
