@@ -13,9 +13,9 @@
  *= require_tree .
  *= require_self
  */
-body {
-  padding-top: 50px;
-}
+// body {
+//   padding-top: 50px;
+// }
  section.module.parallax {
    height: 650px;
    background-position: 50% 80%;
@@ -107,10 +107,10 @@ body {
     background-size: cover;
 }
 
-.album-show-1969 {
+.album-show-1967 {
   height: 400px;
-  background-image: url("http://www.newyorker.com/wp-content/uploads/2014/11/141103_r25702-1200.jpg");
-  background-position: 50% 50%;
+  background-image: url("http://www.glidemagazine.com/glide/wp-content/uploads/2014/12/tumblr_lzxhwwuFWm1qcxxuwo1_1280.jpg");
+  background-position: 50% 40%;
   background-size: cover;
 }
 
@@ -118,6 +118,41 @@ body {
   height: 400px;
   background-image: url("http://3.bp.blogspot.com/-NN8UYVGVDY4/U7LfyCqhH5I/AAAAAAAAQVE/TTwWFELmGB4/s1600/bob-dylan-by-hunstein.jpg");
   background-position: 50% 5%;
+  background-size: cover;
+}
+
+.album-show-1966 {
+  height: 400px;
+  background-image: url("https://www.morrisonhotelgallery.com/images/medium/feinstein-04.jpg");
+  background-position: 50% 15%;
+  background-size: cover;
+}
+
+.album-show-1976 {
+  height: 400px;
+  background-image: url("http://media.npr.org/assets/img/2012/11/30/lr1320e-fr3a-4-a23077188d48b62ceff4c61f6d1b6338bb106b9c.jpg");
+  background-position: 50% 45%;
+  background-size: cover;
+}
+
+.album-show-1979 {
+  height: 400px;
+  background-image: url("http://assets.rollingstone.com/assets/1981/article/dylan-in-fine-voice-as-tour-hits-east-coast-19811210/181743/large_rect/1421615775/1401x788-502323549.jpg");
+  background-position: 50% 35%;
+  background-size: cover;
+}
+
+.album-show-1984 {
+  height: 400px;
+  background-image: url("http://www.tucsonweekly.com/imager/9th-ave-6-of-20/b/original/3175461/0d63/Bob_Dylan_1983___9th_ave_6_of_20___3___2_.jpg");
+  background-position: 50% 15%;
+  background-size: cover;
+}
+
+.album-show-2000 {
+  height: 400px;
+  background-image: url("http://dylantube.com/wp-content/uploads/2015/03/The-Night-We-Called-It-A-Day.mp4_snapshot_02.11_2015.03.02_16.22.07.jpg");
+  background-position: 50% 15%;
   background-size: cover;
 }
 

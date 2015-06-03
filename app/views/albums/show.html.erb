@@ -1,7 +1,22 @@
-<div class="album-show-1965">
+<% if @year <= 1964 %>
+  <div class="album-show-1965">
+<% elsif @year > 1964 && @year < 1967 %>
+  <div class="album-show-1966">
+<% elsif @year >= 1967 && @year < 1976 %>
+  <div class="album-show-1967">
+<% elsif @year > 1975 && @year < 1979 || @album.title == "Bob Dylan At Budokan" %>
+  <div class="album-show-1976">
+<% elsif @year > 1978 && @year < 1984 && @album.title != "Bob Dylan At Budokan" %>
+  <div class="album-show-1979">
+<% elsif @year > 1983 && @year < 2000 %>
+  <div class="album-show-1984">
+<% elsif @year >= 2000 %>
+  <div class="album-show-2000">
+<% end %>
 </div>
 
   <h1><%= @album.title %></h1>
+  <%= @year %>
   <%= image_tag(@album.image_url) %>
   <div class="list-group col-md-4">
       <% @album_tracks.each do |track| %>
