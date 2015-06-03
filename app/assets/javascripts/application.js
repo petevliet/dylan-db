@@ -54,6 +54,9 @@ $(document).ready(function(e){
     var albumBoxes = $(".well-albums-index").children()
     // integer to be used for album count text
     var numAlbums = 0;
+    if (checkedYears.length === 0 && checkedTypes.length === 0){
+      location.reload();
+    };
     albumBoxes.hide();
     if (checkedTypes.length > 0){
       $(checkedTypes).each(function(i, type){
@@ -63,13 +66,10 @@ $(document).ready(function(e){
               $(el).show();
             }
           });
-        // console.log($(type).val());
         });
       });
-      //   console.log($(el).data('types'));
-
     // for any years checked, albums released only in those years
-    } else if (checkedYears.length > 0){
+  } if (checkedYears.length > 0){
       // for each checked box, iterate through each albumBox
       $(checkedYears).each(function(i, years){
         $(albumBoxes).each(function(i, el){
@@ -80,15 +80,14 @@ $(document).ready(function(e){
           }
         });
       });
-      // results will be shown in one well container
-      $(".pagination").remove();
-      $("#albums_count").replaceWith("<div id='albums_count'><center>Showing albums 1 - " + numAlbums + " of " + numAlbums + "</center></div>");
-      $('body, .well-albums-container').animate({
-        scrollTop: $("#albums").offset().top
-      }, 1600);
-    }else{
-      location.reload();
-    };
+    }
+    // results will be shown in one well container
+    var visibleAlbums = $("div.panel-body:visible").length;
+    $(".pagination").remove();
+    $("#albums_count").replaceWith("<div id='albums_count'><center>Showing albums 1 - " + visibleAlbums + " of " + visibleAlbums + "</center></div>");
+    $('html, body').animate({
+      scrollTop: $("#albums").offset().top
+    }, 1000);
   });
 
   function previous(){
