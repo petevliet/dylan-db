@@ -16,13 +16,9 @@
 body {
   padding-top: 50px;
 }
- section.module h2 {
-   margin-top: 100px;
-   margin-bottom: 50px;
- }
  section.module.parallax {
    height: 650px;
-   background-position: 50% 50%;
+   background-position: 50% 80%;
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;
@@ -30,14 +26,13 @@ body {
  }
  section.module.parallax h1 {
    color: white;
-   line-height: 700px;
+   line-height: 800px;
    text-align: center;
    text-shadow: 0 0 10px #090808;
  }
  section.module.parallax-1 {
    background-image: url("http://i.imgur.com/WPdsFAH.jpg");
  }
-
 
  @media all and (min-width: 600px) {
    section.module h2 {
@@ -110,4 +105,22 @@ body {
     background-image: url("dylan_album_index.jpg");
     // http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/2/21/1392991666451/Bob-Dylan-in-1963-014.jpg
     background-size: cover;
+}
+
+.album-show-1969 {
+  height: 400px;
+  background-image: url("http://www.newyorker.com/wp-content/uploads/2014/11/141103_r25702-1200.jpg");
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.album-show-1965 {
+  height: 400px;
+  background-image: url("http://3.bp.blogspot.com/-NN8UYVGVDY4/U7LfyCqhH5I/AAAAAAAAQVE/TTwWFELmGB4/s1600/bob-dylan-by-hunstein.jpg");
+  background-position: 50% 5%;
+  background-size: cover;
+}
+
+.list-group {
+  float: inherit;
 }

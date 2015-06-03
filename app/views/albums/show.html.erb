@@ -1,8 +1,12 @@
-<h1><%= @album.title %></h1>
-<%= image_tag(@album.image_url) %>
+<div class="album-show-1965">
+</div>
 
-<ul>
-  <% @album_tracks.each do |track| %>
-    <li><%= link_to track.title, album_track_path(@album, track) %></li>
-  <% end %>
-</ul>
+  <h1><%= @album.title %></h1>
+  <%= image_tag(@album.image_url) %>
+  <div class="list-group col-md-4">
+      <% @album_tracks.each do |track| %>
+        <div class= "list-group-item">
+          <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link" %>
+        </div>
+      <% end %>
+  </div>
