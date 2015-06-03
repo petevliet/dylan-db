@@ -49,40 +49,41 @@ $(document).ready(function(e){
   });
   // narrow search according to checkboxes on albums#index when 'narrow' button clicked
   $("#narrow-search").on("click", function(){
+    // place year and type selected checkboxes into separate arrays
     var checkedYears = $("#years").find(":checkbox").filter(":checked");
     var checkedTypes = $("#types").find(":checkbox").filter(":checked");
     var albumBoxes = $(".well-albums-index").children()
-    // integer to be used for album count text
-    var numAlbums = 0;
+    // reload page if no checkboxes selected and narrowsearch is clicked
     if (checkedYears.length === 0 && checkedTypes.length === 0){
       location.reload();
     };
     albumBoxes.hide();
+    // iterate through each selected album type checkbox, album, and album type and show if values match
     if (checkedTypes.length > 0){
       $(checkedTypes).each(function(i, type){
         $(albumBoxes).each(function(i, el){
           $($(el).data('types')).each(function(i, albumType){
             if(albumType === $(type).val()){
+              // if album type matches selected checkbox type, make album visible
               $(el).show();
             }
           });
         });
       });
-    // for any years checked, albums released only in those years
+    // for each checked box, iterate through each albumBox
   } if (checkedYears.length > 0){
-      // for each checked box, iterate through each albumBox
       $(checkedYears).each(function(i, years){
         $(albumBoxes).each(function(i, el){
-          // if album year falls within checkedBox range, show it
+          // if album year falls within checkedBox range, make album visible
           if(parseInt($(el).data('year-released')) >= parseInt($(years).val()) && parseInt($(el).data('year-released')) < parseInt($(years).val()) + 10){
             $(el).show();
-            numAlbums ++;
           }
         });
       });
     }
-    // results will be shown in one well container
+    // assign variable to num of visible albums
     var visibleAlbums = $("div.panel-body:visible").length;
+    // results will be shown in one well container
     $(".pagination").remove();
     $("#albums_count").replaceWith("<div id='albums_count'><center>Showing albums 1 - " + visibleAlbums + " of " + visibleAlbums + "</center></div>");
     $('html, body').animate({
