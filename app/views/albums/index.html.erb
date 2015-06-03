@@ -3,41 +3,14 @@
 <input type="hidden" id="show_per_page" />
 <div class="albums-index" id="flash">
 </div>
-<div class="well well-sorting-container">
-  <h4>Narrow List</h4>
-  <div class="form">
-    <div class="form-group">
-      <div class="checkbox">
-        <div class="row">
-          <div class="col-md-10">
-            <b>Album Type</b>
-              <ul id="types">
-                <li><input type='checkbox' value='Bootleg'>Bootleg Series</input></li>
-                <li><input type='checkbox' value='Compilations'>Compilations</input></li>
-                <li><input type='checkbox' value='Live'>Live Albums</input></li>
-                <li><input type='checkbox' value='Studio'>Studio Albums</input></li>
-              </ul>
-            <b>Year Released</b>
-              <ul id="years">
-                <li><input type='checkbox' value='1962'>1962-1971</input></li>
-                <li><input type='checkbox' value='1972'>1972-1981</input></li>
-                <li><input type='checkbox' value='1982'>1982-1991</input></li>
-                <li><input type='checkbox' value='1992'>1992-2001</input></li>
-                <li><input type='checkbox' value='2002'>2001-</input></li>
-              </ul>
-            <br>
-            <center><a id="narrow-search" class="btn btn-info btn-xs">Narrow Search</a></center>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+<%= render 'sorting_box.html.erb' %>
 
 <div class="well-albums-container"><a id="albums"></a>
   <div class="well well-albums-index">
     <% @albums.each do |album| %>
-      <div data-year-released="<%= album.release_date.strftime('%Y') %>" class="panel panel-default album-box">
+      <div data-year-released="<%= album.release_date.strftime('%Y') %>"
+        data-types='<%= album.types %>' class="panel panel-default album-box">
         <div class="panel-heading"><center><%= link_to album.title, album_path(album), class: "btn btn-link btn-xs", style: "white-space: normal" %></center></div>
         <div class="panel-body">
           <%= link_to(image_tag(album.image_url, size: "160x160"), album_path(album)) %>
