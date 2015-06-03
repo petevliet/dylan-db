@@ -49,15 +49,29 @@ $(document).ready(function(e){
   });
   // narrow search according to checkboxes on albums#index when 'narrow' button clicked
   $("#narrow-search").on("click", function(){
-    var checkedBoxes = $(".checkbox").find(":checkbox").filter(":checked");
+    var checkedYears = $("#years").find(":checkbox").filter(":checked");
+    var checkedTypes = $("#types").find(":checkbox").filter(":checked");
     var albumBoxes = $(".well-albums-index").children()
     // integer to be used for album count text
     var numAlbums = 0;
     albumBoxes.hide();
+    if (checkedTypes.length > 0){
+      $(checkedTypes).each(function(i, type){
+        $(albumBoxes).each(function(i, el){
+          $($(el).data('types')).each(function(i, albumType){
+            if(albumType === $(type).val()){
+              $(el).show();
+            }
+          });
+        // console.log($(type).val());
+        });
+      });
+      //   console.log($(el).data('types'));
+
     // for any years checked, albums released only in those years
-    if ($('#years').find(":checkbox").filter(":checked").length > 0){
+    } else if (checkedYears.length > 0){
       // for each checked box, iterate through each albumBox
-      $(checkedBoxes).each(function(i, years){
+      $(checkedYears).each(function(i, years){
         $(albumBoxes).each(function(i, el){
           // if album year falls within checkedBox range, show it
           if(parseInt($(el).data('year-released')) >= parseInt($(years).val()) && parseInt($(el).data('year-released')) < parseInt($(years).val()) + 10){
