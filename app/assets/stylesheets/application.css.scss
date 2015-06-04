@@ -167,12 +167,11 @@
   margin-top: 25px;
   position: relative;
   min-height: 300px;
-  max-height: 410px;
+  max-height: 475px;
   overflow-y: scroll;
 }
 
 .album-info {
-  margin-top: 25px;
   float: left;
 }
 
@@ -182,4 +181,11 @@
 
 .album-box-active-button, .album-box-active-button:hover {
   border-color: #75caeb;
+}
+
+.background-album-cover img {
+  height: 600px;
+  float: right;
+  // position: absolute;
+  opacity: 0.4;
 }
