@@ -117,6 +117,13 @@ $(document).ready(function(e){
     }
   );
 
+  $("#album-art").load(function(){
+    // console.log('yo');
+    $('html, body').animate({
+      scrollTop: $(".breadcrumb").offset().top
+    }, 1600);
+  });
+
   function previous(){
     if (!$("#previous").hasClass("disabled")){
       new_page = parseInt($("#current_page").val()) - 1;
