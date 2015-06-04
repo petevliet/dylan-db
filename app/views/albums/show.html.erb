@@ -14,10 +14,14 @@
   <div class="album-show-2000">
 <% end %>
 </div>
-  <h1><%= @album.title %></h1>
+<ul class="breadcrumb">
+  <li><%= link_to 'Home', root_path %></li>
+  <li><%= link_to 'Albums', albums_path %></li>
+  <li class="active"><em><%= @album.title %></em></li>
+</ul>
+  <h1><em><%= @album.title %></em></h1>
   <h4><%= @year %></h4>
   <div class="album-info col-md-3">
-  <br />
   <%= image_tag(@album.image_url) %>
 </div>
   <div class="col-md-4">
