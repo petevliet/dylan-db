@@ -1,12 +1,14 @@
-<% if @year <= 1964 %>
+<% if @album.types.include?("live") %>
+  <div class="album-show-live">
+<% elsif @year <= 1964 %>
   <div class="album-show-1965">
 <% elsif @year > 1964 && @year < 1967 %>
   <div class="album-show-1966">
 <% elsif @year >= 1967 && @year < 1976 %>
   <div class="album-show-1967">
-<% elsif @year > 1975 && @year < 1979 || @album.title == "Bob Dylan At Budokan" %>
+<% elsif @year > 1975 && @year < 1979 %>
   <div class="album-show-1976">
-<% elsif @year > 1978 && @year < 1984 && @album.title != "Bob Dylan At Budokan" %>
+<% elsif @year > 1978 && @year < 1984 %>
   <div class="album-show-1979">
 <% elsif @year > 1983 && @year < 2000 %>
   <div class="album-show-1984">
@@ -14,25 +16,29 @@
   <div class="album-show-2000">
 <% end %>
 </div>
-<ul class="breadcrumb">
-  <li><%= link_to 'Home', root_path %></li>
-  <li><%= link_to 'Albums', albums_path %></li>
-  <li class="active"><em><%= @album.title %></em></li>
-</ul>
-  <h1><em><%= @album.title %></em></h1>
-  <h4><%= @year %></h4>
-  <div class="album-info col-md-3">
+<div class="row">
+  <div class="col-md-6">
+    <ul class="breadcrumb">
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Albums', albums_path %></li>
+      <li class="active"><em><%= @album.title %></em></li>
+    </ul>
+  </div>
+</div>
+<h1><em><%= @album.title %></em></h1>
+<h4><%= @year %></h4>
+<div class="album-info col-md-3">
   <%= image_tag(@album.image_url) %>
 </div>
-  <div class="col-md-4">
-    <h4><%= @album.tracks.count %> Songs:</h4>
-    <div class="album-tracks">
-      <div class="list-group">
-          <% @album_tracks.each do |track| %>
-            <div class= "list-group-item">
-              <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link", style: "white-space: normal; text-align: left" %>
-            </div>
-          <% end %>
-      </div>
+<div class="col-md-4">
+  <h4><%= @album.tracks.count %> Songs:</h4>
+  <div class="album-tracks">
+    <div class="list-group">
+        <% @album_tracks.each do |track| %>
+          <div class= "list-group-item">
+            <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link", style: "white-space: normal; text-align: left" %>
+          </div>
+        <% end %>
     </div>
   </div>
+</div>

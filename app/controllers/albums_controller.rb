@@ -18,7 +18,6 @@ class AlbumsController < ApplicationController
       @dylan_lookup.get_album(@album.album_num)
     end
     @album_tracks = @album.tracks.order(:track_id)
-    # if @album.title.includes
     @year = @album.release_date.strftime("%Y").to_i
   end
 

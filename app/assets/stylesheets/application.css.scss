@@ -107,13 +107,6 @@
     background-size: cover;
 }
 
-.album-show-1967 {
-  height: 400px;
-  background-image: url("http://www.glidemagazine.com/glide/wp-content/uploads/2014/12/tumblr_lzxhwwuFWm1qcxxuwo1_1280.jpg");
-  background-position: 50% 40%;
-  background-size: cover;
-}
-
 .album-show-1965 {
   height: 400px;
   background-image: url("http://3.bp.blogspot.com/-NN8UYVGVDY4/U7LfyCqhH5I/AAAAAAAAQVE/TTwWFELmGB4/s1600/bob-dylan-by-hunstein.jpg");
@@ -125,6 +118,13 @@
   height: 400px;
   background-image: url("http://media.npr.org/assets/img/2012/08/01/dylan-microphone-18e11afeff27c5b104b88a7f52e51d59c3354462.jpg");
   background-position: 50% 60%;
+  background-size: cover;
+}
+
+.album-show-1967 {
+  height: 400px;
+  background-image: url("http://www.glidemagazine.com/glide/wp-content/uploads/2014/12/tumblr_lzxhwwuFWm1qcxxuwo1_1280.jpg");
+  background-position: 50% 40%;
   background-size: cover;
 }
 
@@ -151,8 +151,15 @@
 
 .album-show-2000 {
   height: 400px;
-  background-image: url("http://dylantube.com/wp-content/uploads/2015/03/The-Night-We-Called-It-A-Day.mp4_snapshot_02.11_2015.03.02_16.22.07.jpg");
-  background-position: 50% 15%;
+  background-image: url("http://www.dosavannah.com/sites/default/files/photos/bob-dylan-hd-wallpapers-free-download-6.jpg");
+  background-position: 50% 10%;
+  background-size: cover;
+}
+
+.album-show-live {
+  height: 400px;
+  background-image: url("http://i.imgur.com/U9usG3P.jpg");
+  background-position: 50% 5%;
   background-size: cover;
 }
 
