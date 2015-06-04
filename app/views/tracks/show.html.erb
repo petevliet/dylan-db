@@ -1,6 +1,6 @@
 <h1><%= @track.title %></h1>
 <h4>
-  <em><%= @track.album.title %></em>, <%= @album_year %>
+  <em><%= link_to @track.album.title, album_path(@track.album) %></em>, <%= @album_year %>
 </h4>
 <br>
 <% @track.verses.each_with_index do |section, index| %>

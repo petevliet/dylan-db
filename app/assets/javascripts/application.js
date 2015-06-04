@@ -119,8 +119,8 @@ $(document).ready(function(e){
 
   $("#album-art").load(function(){
     $('html, body').animate({
-      scrollTop: $(".album-info").offset().top
-    }, 2000);
+      scrollTop: $(document).height()
+    }, 1400);
   });
 
   $("#album-art").hover(
