@@ -118,11 +118,18 @@ $(document).ready(function(e){
   );
 
   $("#album-art").load(function(){
-    // console.log('yo');
     $('html, body').animate({
       scrollTop: $(".breadcrumb").offset().top
     }, 1600);
   });
+
+  $("#album-art").hover(
+    function(){
+      $(this).fadeTo(400, 1.0);
+    }, function(){
+      $(this).fadeTo(400, 0.4);
+    }
+  );
 
   function previous(){
     if (!$("#previous").hasClass("disabled")){
