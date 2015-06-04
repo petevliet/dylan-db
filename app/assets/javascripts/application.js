@@ -91,6 +91,20 @@ $(document).ready(function(e){
     }, 1000);
   });
 
+  $(".album-box").hover(
+    function(){
+      $(this).removeClass("panel-default");
+      $(this).addClass("panel-info album-box-active");
+      $($(this).find(".btn-xs")[0]).removeClass("btn-link");
+      $($(this).find(".btn-xs")[0]).addClass("btn-info album-box-active-button");
+    }, function(){
+      $(this).removeClass("panel-info album-box-active");
+      $(this).addClass("panel-default");
+      $($(this).find(".btn-xs")[0]).removeClass("btn-info album-box-active-button");
+      $($(this).find(".btn-xs")[0]).addClass("btn-link");
+    }
+  );
+
   $(".list-group-item").hover(
     function(){
       $(this).addClass("active");
