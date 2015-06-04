@@ -14,14 +14,19 @@
   <div class="album-show-2000">
 <% end %>
 </div>
-
   <h1><%= @album.title %></h1>
-  <%= @year %>
+  <h4><%= @year %></h4>
+  <div class="album-info col-md-4">
+  <br />
   <%= image_tag(@album.image_url) %>
-  <div class="list-group col-md-4">
-      <% @album_tracks.each do |track| %>
-        <div class= "list-group-item">
-          <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link" %>
-        </div>
-      <% end %>
+</div>
+
+  <div class="album-tracks col-md-4">
+    <div class="list-group">
+        <% @album_tracks.each do |track| %>
+          <div class= "list-group-item">
+            <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link" %>
+          </div>
+        <% end %>
+    </div>
   </div>

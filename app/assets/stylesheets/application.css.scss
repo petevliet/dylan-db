@@ -123,8 +123,8 @@
 
 .album-show-1966 {
   height: 400px;
-  background-image: url("https://www.morrisonhotelgallery.com/images/medium/feinstein-04.jpg");
-  background-position: 50% 15%;
+  background-image: url("http://media.npr.org/assets/img/2012/08/01/dylan-microphone-18e11afeff27c5b104b88a7f52e51d59c3354462.jpg");
+  background-position: 50% 60%;
   background-size: cover;
 }
 
@@ -156,6 +156,15 @@
   background-size: cover;
 }
 
-.list-group {
-  float: inherit;
+.album-tracks {
+  margin-top: 25px;
+  position: relative;
+  min-height: 300px;
+  max-height: 410px;
+  overflow-y: scroll;
+}
+
+.album-info {
+  margin-top: 25px;
+  float: left;
 }
