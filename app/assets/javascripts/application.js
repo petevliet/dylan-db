@@ -119,15 +119,15 @@ $(document).ready(function(e){
 
   $("#album-art").load(function(){
     $('html, body').animate({
-      scrollTop: $(".breadcrumb").offset().top
-    }, 1600);
+      scrollTop: $(".album-info").offset().top
+    }, 2000);
   });
 
   $("#album-art").hover(
     function(){
       $(this).fadeTo(400, 1.0);
     }, function(){
-      $(this).fadeTo(400, 0.4);
+      $(this).fadeTo(400, 0.8);
     }
   );
 
