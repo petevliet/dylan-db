@@ -91,6 +91,18 @@ $(document).ready(function(e){
     }, 1000);
   });
 
+  $(".list-group-item").hover(
+    function(){
+      $(this).addClass("active");
+      $($(this).children()[0]).removeClass("btn-link");
+      $($(this).children()[0]).addClass("btn-primary album-show-active-button");
+    }, function(){
+      $(this).removeClass("active");
+      $($(this).children()[0]).removeClass("btn-primary album-show-active-button");
+      $($(this).children()[0]).addClass("btn-link");
+    }
+  );
+
   function previous(){
     if (!$("#previous").hasClass("disabled")){
       new_page = parseInt($("#current_page").val()) - 1;

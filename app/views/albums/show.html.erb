@@ -16,7 +16,7 @@
 </div>
   <h1><%= @album.title %></h1>
   <h4><%= @year %></h4>
-  <div class="album-info col-md-4">
+  <div class="album-info col-md-3">
   <br />
   <%= image_tag(@album.image_url) %>
 </div>
@@ -25,7 +25,7 @@
     <div class="list-group">
         <% @album_tracks.each do |track| %>
           <div class= "list-group-item">
-            <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link" %>
+            <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link", style: "white-space: normal; text-align: left" %>
           </div>
         <% end %>
     </div>
