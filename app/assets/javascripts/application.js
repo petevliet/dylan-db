@@ -97,11 +97,13 @@ $(document).ready(function(e){
       $(this).addClass("panel-info album-box-active");
       $($(this).find(".btn-xs")[0]).removeClass("btn-link");
       $($(this).find(".btn-xs")[0]).addClass("btn-info album-box-active-button");
+      $($(this).find("img")).fadeTo(200, 1.0);
     }, function(){
       $(this).removeClass("panel-info album-box-active");
       $(this).addClass("panel-default");
       $($(this).find(".btn-xs")[0]).removeClass("btn-info album-box-active-button");
       $($(this).find(".btn-xs")[0]).addClass("btn-link");
+      $($(this).find("img")).fadeTo(200, 0.6);
     }
   );
 
@@ -129,13 +131,13 @@ $(document).ready(function(e){
     }, 1500);
   });
 
-  $(".panel-body img").hover(
-    function(){
-      $(this).fadeTo(200, 1.0);
-    }, function(){
-      $(this).fadeTo(200, 0.6);
-    }
-  );
+  // $(".panel-body img").hover(
+  //   function(){
+  //     $(this).fadeTo(200, 1.0);
+  //   }, function(){
+  //     $(this).fadeTo(200, 0.6);
+  //   }
+  // );
 
   function previous(){
     if (!$("#previous").hasClass("disabled")){
