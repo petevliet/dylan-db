@@ -191,3 +191,8 @@
 #album-index-art {
   opacity: 0.6;
 }
+
+blockquote {
+  max-height: 165px;
+  overflow-y: scroll;
+}
