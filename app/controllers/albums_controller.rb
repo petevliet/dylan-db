@@ -3,8 +3,14 @@ class AlbumsController < ApplicationController
   def index
     @albums = Album.all.order(:release_date)
     @show_pages = @albums.count / 12 + 1
+
     @albums.each do |record|
-      url = URI.parse(record.large_image_url)
+      record.image_url = "https://partner.api.beatsmusic.com/v1/api/albums/#{record.album_num}/images/default?client_id=#{ENV['BEATS_API_KEY']}"
+      record.save
+    end
+
+    @albums.each do |record|
+      url = URI.parse(record.image_url)
       res = Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') {|http| http.get(url.request_uri)}
       record.large_image_url = res['location']
       record.save
