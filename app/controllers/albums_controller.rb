@@ -9,6 +9,11 @@ class AlbumsController < ApplicationController
     #   record.large_image_url = res['location']
     #   record.save
     # end
+
+    # @albums.each do |record|
+    #   review_finder = MusicGrabber.new
+    #   review_finder.get_review(record.album_num)
+    # end
   end
 
   def show
@@ -19,6 +24,10 @@ class AlbumsController < ApplicationController
     end
     @album_tracks = @album.tracks.order(:track_id)
     @year = @album.release_date.strftime("%Y").to_i
+    if @album.album_review != "n/a"
+      @review = @album.album_review.split("~")
+      @author_and_source = @review[1].split(",")
+    end
   end
 
 end

@@ -26,6 +26,12 @@
     </div>
   </div>
   <h2><em><%= @album.title %></em>, <%= @year %></h2>
+  <blockquote>
+    <%= @review[0] %>
+    <small>
+      <%= @author_and_source[0] %>, <cite title="<%= @author_and_source[1] %>"><%= @author_and_source[1] %></cite>
+    </small>
+  </blockquote>
   <div class="album-info col-md-4">
     <br>
     <%= @album.tracks.count %> Songs:
