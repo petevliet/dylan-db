@@ -3,12 +3,12 @@ class AlbumsController < ApplicationController
   def index
     @albums = Album.all.order(:release_date)
     @show_pages = @albums.count / 12 + 1
-    # @albums.each do |record|
-    #   url = URI.parse(record.large_image_url)
-    #   res = Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') {|http| http.get(url.request_uri)}
-    #   record.large_image_url = res['location']
-    #   record.save
-    # end
+    @albums.each do |record|
+      url = URI.parse(record.large_image_url)
+      res = Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') {|http| http.get(url.request_uri)}
+      record.large_image_url = res['location']
+      record.save
+    end
 
     # @albums.each do |record|
     #   review_finder = MusicGrabber.new
