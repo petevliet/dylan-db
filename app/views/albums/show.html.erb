@@ -1,57 +1,35 @@
-<% if @album.types.include?("live") %>
-  <div class="album-show-live">
-<% elsif @year <= 1964 %>
-  <div class="album-show-1965">
-<% elsif @year > 1964 && @year < 1967 %>
-  <div class="album-show-1966">
-<% elsif @year > 1966 && @year < 1976 %>
-  <div class="album-show-1967">
-<% elsif @year > 1975 && @year < 1979 %>
-  <div class="album-show-1976">
-<% elsif @year > 1978 && @year < 1984 %>
-  <div class="album-show-1979">
-<% elsif @year > 1983 && @year < 2000 %>
-  <div class="album-show-1984">
-<% elsif @year >= 2000 %>
-  <div class="album-show-2000">
-<% end %>
+<%= render 'album_image_logic' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Albums', albums_path %></li>
+      <li class="active"><em><%= @album.title %></em></li>
+    </ul>
+  </div>
 </div>
-  <div class="row">
-    <div class="col-md-12">
-      <ul class="breadcrumb">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Albums', albums_path %></li>
-        <li class="active"><em><%= @album.title %></em></li>
-      </ul>
+<h2><em><%= @album.title %></em>, <%= @year %></h2>
+<br>
+
+<%= render 'album_info_accordions' %>
+
+<div class="album-info col-md-4">
+  <br>
+  <%= @album.tracks.count %> Songs:
+  <div class="album-tracks">
+    <div class="list-group">
+        <% @album_tracks.each do |track| %>
+          <div class= "list-group-item"
+            data-container="body" data-toggle="popover" data-placement="right" data-content="Song Comments: <%= track.comments.count %>">
+            <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link", style: "white-space: normal; text-align: left" %>
+          </div>
+        <% end %>
     </div>
   </div>
-  <h2><em><%= @album.title %></em>, <%= @year %></h2>
-  <% if @album.album_review != "n/a" %>
-    <br>
-    <blockquote>
-      <%= @review[0].html_safe %>
-      <small>
-        <%= @author_and_source[0] %>, <cite title="<%= @author_and_source[1] %>"><%= @author_and_source[1] %></cite>
-      </small>
-    </blockquote>
-  <% end %>
-  <div class="album-info col-md-4">
-    <br>
-    <%= @album.tracks.count %> Songs:
-    <div class="album-tracks">
-      <div class="list-group">
-          <% @album_tracks.each do |track| %>
-            <div class= "list-group-item"
-              data-container="body" data-toggle="popover" data-placement="right" data-content="Song Comments: <%= track.comments.count %>">
-              <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link", style: "white-space: normal; text-align: left" %>
-            </div>
-          <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="background-album-cover">
+</div>
+<div class="background-album-cover">
   <div class="col-md-8">
     <img src="<%= @album.large_image_url %>" id="album-art">
   </div>
-</div>
 </div>

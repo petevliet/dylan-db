@@ -131,14 +131,6 @@ $(document).ready(function(e){
     }, 1500);
   });
 
-  // $(".panel-body img").hover(
-  //   function(){
-  //     $(this).fadeTo(200, 1.0);
-  //   }, function(){
-  //     $(this).fadeTo(200, 0.6);
-  //   }
-  // );
-
   function previous(){
     if (!$("#previous").hasClass("disabled")){
       new_page = parseInt($("#current_page").val()) - 1;
