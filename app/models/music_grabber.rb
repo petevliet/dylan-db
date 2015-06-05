@@ -43,4 +43,19 @@ class MusicGrabber
     end
   end
 
+  def get_review(album_id)
+    response = @conn.get do |req|
+      req.url "v1/api/albums/#{album_id}/review?"
+      req.params['client_id'] = ENV['BEATS_API_KEY']
+    end
+
+    review_json = JSON.parse(response.body)
+    if review_json["code"] == "ResourceNotFound"
+      review = "n/a"
+    else
+      review = review_json["data"]["content"]
+    end
+
+  end
+
 end
