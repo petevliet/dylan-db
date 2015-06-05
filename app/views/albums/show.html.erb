@@ -25,15 +25,15 @@
       </ul>
     </div>
   </div>
-  <h1><em><%= @album.title %></em></h1>
+  <h2><em><%= @album.title %></em>, <%= @year %></h2>
   <div class="album-info col-md-4">
-    <h3><%= @year %></h3>
     <br>
-    <h4><%= @album.tracks.count %> Songs:</h4>
+    <%= @album.tracks.count %> Songs:
     <div class="album-tracks">
       <div class="list-group">
           <% @album_tracks.each do |track| %>
-            <div class= "list-group-item">
+            <div class= "list-group-item"
+              data-container="body" data-toggle="popover" data-placement="right" data-content="Song Comments: <%= track.comments.count %>">
               <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link", style: "white-space: normal; text-align: left" %>
             </div>
           <% end %>

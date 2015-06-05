@@ -105,15 +105,21 @@ $(document).ready(function(e){
     }
   );
 
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  });
+
   $(".list-group-item").hover(
     function(){
       $(this).addClass("active");
       $($(this).children()[0]).removeClass("btn-link");
       $($(this).children()[0]).addClass("btn-primary album-show-active-button");
+      $(this).popover('show');
     }, function(){
       $(this).removeClass("active");
       $($(this).children()[0]).removeClass("btn-primary album-show-active-button");
       $($(this).children()[0]).addClass("btn-link");
+      $(this).popover('hide');
     }
   );
 
