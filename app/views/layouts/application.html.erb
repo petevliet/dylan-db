@@ -24,10 +24,11 @@
         <li><%= link_to 'Albums', albums_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if session[:user_id] == nil %>
-          <li><%= link_to "Sign In with Twitter", "/auth/twitter" %></li>
-        <% else %>
+        <% if @current_user %>
+          <li><%= link_to @current_user.name, "#" %></li>
           <li><%= link_to "Log Out", "/logout" %></li>
+        <% else %>
+          <li><%= link_to "Sign In with Twitter", "/auth/twitter" %></li>
         <% end %>
       </ul>
     </div>

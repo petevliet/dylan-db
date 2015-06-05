@@ -13,7 +13,7 @@
           Collection and discussion of the 20th century's greatest singer-songwriter's lyrics
           <br>
           <br>
-          <% if session[:user_id] == nil %>
+          <% if @current_user == nil %>
             <%= link_to "Sign in with Twitter", "/auth/twitter" %> to join the argument
           <% end %>
         </h4>
