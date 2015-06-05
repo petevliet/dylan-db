@@ -1,8 +1,15 @@
 class AlbumsController < ApplicationController
 
   def index
-    @albums = Album.all.order(:release_date)
-    @show_pages = @albums.count / 12 + 1
+    @titles = []
+    @dylan_lookup = MusicGrabber.new
+    @dylan_albums = @dylan_lookup.get_dylan
+    @albums = @dylan_albums["data"]
+    @albums.each do |album|
+      @titles << album["title"]
+    end
+    # @albums = Album.all.order(:release_date)
+    # @show_pages = @albums.count / 12 + 1
     # @albums.each do |record|
     #   url = URI.parse(record.large_image_url)
     #   res = Net::HTTP.start(url.host, url.port, :use_ssl => url.scheme == 'https') {|http| http.get(url.request_uri)}
