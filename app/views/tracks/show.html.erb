@@ -1,6 +1,16 @@
+<div class="row">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><%= link_to 'Home', root_path %></li>
+      <li><%= link_to 'Albums', albums_path %></li>
+      <li><%= link_to @track.album.title, album_path(@track.album) %></li>
+      <li class="active"><em><%= @track.title %></em></li>
+    </ul>
+  </div>
+</div>
 <h1><em><%= @track.title %></em></h1>
 <h4>
-  <em><%= link_to @track.album.title, album_path(@track.album) %></em>, <%= @album_year %>
+  From <em><%= link_to @track.album.title, album_path(@track.album) %></em>, <%= @album_year %>
 </h4>
 <div class="track-show">
 </div>
