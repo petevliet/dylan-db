@@ -178,12 +178,17 @@
   background-image: url("http://i.imgur.com/hDwm2b7.jpg");
   background-size: cover;
   background-position: 100% 50%;
+  opacity: 0.8;
 }
 
 .lyrics {
+  font-size: 1.1em;
+  display: inline-block;
+  border-radius: 2%;
   float: left;
   max-height: 625px;
-  width: 590px;
+  opacity: 0.8;
+  // width: 590px;
   overflow-y: scroll;
 }
 

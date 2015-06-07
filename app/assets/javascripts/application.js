@@ -13,15 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require jquery.scrollorama.js
 //= require_tree .
 $(document).ready(function(){
 
-  // enable scrollorama for tracks#show
-  var scrollorama = $.scrollorama({
-      blocks: '.scrollblock',
-      enablePin: false
-     });
   // number albums want to display
   var show_per_page = 12;
   // number of total albums set to display
@@ -137,12 +131,22 @@ $(document).ready(function(){
     }, 1500);
   });
 
-  $("div.track-show").load(function(){
-    console.log("yo");
-    // $('html, body').animate({
-    //   scrollTop: $("h1").offset().top
-    // }, 1500);
-  });
+  $(".lyric-section").hover(
+    function(){
+      $(this).animate({
+        backgroundColor: "#E2F9FB",
+        fontSize: "1.2em"
+      }, 100)
+    }, function(){
+      $(this).animate({
+        backgroundColor: "white",
+        fontSize: "1.1em"
+      }, 100);
+      // $(this).css("background-color", "white");
+      // $(this).css("font-size", "1.1em");
+      // $(this).fadeTo(200, 0.8);
+    }
+  );
 
   function previous(){
     if (!$("#previous").hasClass("disabled")){
