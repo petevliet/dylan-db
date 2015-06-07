@@ -13,9 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require jquery.scrollorama.js
 //= require_tree .
-$(document).ready(function(e){
+$(document).ready(function(){
 
+  // enable scrollorama for tracks#show
+  var scrollorama = $.scrollorama({
+      blocks: '.scrollblock',
+      enablePin: false
+     });
   // number albums want to display
   var show_per_page = 12;
   // number of total albums set to display
