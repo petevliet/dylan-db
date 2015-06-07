@@ -137,6 +137,13 @@ $(document).ready(function(){
     }, 1500);
   });
 
+  $("div.track-show").load(function(){
+    console.log("yo");
+    // $('html, body').animate({
+    //   scrollTop: $("h1").offset().top
+    // }, 1500);
+  });
+
   function previous(){
     if (!$("#previous").hasClass("disabled")){
       new_page = parseInt($("#current_page").val()) - 1;
