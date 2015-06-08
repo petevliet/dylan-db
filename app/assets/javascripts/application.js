@@ -166,14 +166,17 @@ $(document).ready(function(){
       backgroundColor: "#FFC0BE",
       fontSize: "1.2em"
     }, 100);
-    // $(".track-show").css("background-image", "none");
     $(".track-show .well").each(function(i, el){
       if ($(clickedVerse).data("verse-comments") == $(el).data("verse-number")){
-        $(el).show();
+        $(el).slideDown(200);
       }else{
-        $(el).hide();
+        $(el).slideUp(100);
       };
     });
+  });
+
+  $(".close-comments").on("click", function(){
+    $(".track-show .well").slideUp(100);
   });
 
   function previous(){
