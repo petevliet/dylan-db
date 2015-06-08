@@ -133,19 +133,48 @@ $(document).ready(function(){
 
   $(".lyric-section").hover(
     function(){
+    if (!$(this).hasClass("active")){
       $(this).animate({
         backgroundColor: "#E2F9FB",
         fontSize: "1.2em"
-      }, 100);
+      }, 50);
       $(this).popover("show");
+    }
     }, function(){
-      $(this).animate({
-        backgroundColor: "white",
-        fontSize: "1.1em"
-      }, 100);
+      if (!$(this).hasClass("active")){
+        $(this).animate({
+          backgroundColor: "white",
+          fontSize: "1.1em"
+        }, 50);
+      }
       $(this).popover("hide");
     }
   );
+
+  $(".lyric-section").on("click", function(){
+    var oldClickedVerse = $(".lyrics").find(".active");
+    if (oldClickedVerse.length > 0){
+      $(oldClickedVerse[0]).removeClass("active");
+      $(oldClickedVerse).animate({
+        backgroundColor: "white",
+        fontSize: "1.1em"
+      }, 100);
+    }
+    var clickedVerse = this;
+    $(clickedVerse).addClass("active");
+    $(clickedVerse).animate({
+      backgroundColor: "#FFC0BE",
+      fontSize: "1.2em"
+    }, 100);
+    // $(".track-show").css("background-image", "none");
+    $(".track-show .well").each(function(i, el){
+      if ($(clickedVerse).data("verse-comments") == $(el).data("verse-number")){
+        $(el).show();
+      }else{
+        $(el).hide();
+      };
+    });
+  });
 
   function previous(){
     if (!$("#previous").hasClass("disabled")){
