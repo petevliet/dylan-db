@@ -18,8 +18,8 @@
   <br>
   <div class="lyrics" id="lyrics-scroll">
     <% @track.verses.each_with_index do |section, index| %>
-      <div class="lyric-section">
-        <%= link_to section.html_safe, new_album_track_comment_path(@track.album, @track, verse: index + 1), class: "text-primary", id: "verse", style:"text-decoration:none; text-decoration-color:purple" %>
+      <div class="lyric-section" data-container="body" data-toggle="popover" data-html="true" data-placement="right" data-content="<b>Comments on section:</b> <%= @comments.where(verse: index + 1).length %><br> Click lyrics to comment">
+        <%= link_to section.html_safe, new_album_track_comment_path(@track.album, @track, verse: index + 1), class: "text-primary", id: "verse", style:"text-decoration:none" %>
       </div>
     <% end %>
   </div>

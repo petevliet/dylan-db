@@ -136,15 +136,14 @@ $(document).ready(function(){
       $(this).animate({
         backgroundColor: "#E2F9FB",
         fontSize: "1.2em"
-      }, 100)
+      }, 100);
+      $(this).popover("show");
     }, function(){
       $(this).animate({
         backgroundColor: "white",
         fontSize: "1.1em"
       }, 100);
-      // $(this).css("background-color", "white");
-      // $(this).css("font-size", "1.1em");
-      // $(this).fadeTo(200, 0.8);
+      $(this).popover("hide");
     }
   );
 
