@@ -1,0 +1,14 @@
+<h1>Songs</h1>
+
+<% @letters_array.each do |letter| %>
+  <%= link_to letter, "#", class: "letterClick", id: letter %>
+<% end %>
+
+<ul>
+  <% @letters_hash["A"].sort_by{|k,v| k["title"]}.each do |track| %>
+    <li>
+      <em><%= link_to track.title, album_track_path(track.album, track) %></em>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;from <em><%= track.album.title %></em>
+    </li>
+  <% end %>
+</ul>
