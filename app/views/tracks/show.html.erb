@@ -13,38 +13,7 @@
   From <em><%= link_to @track.album.title, album_path(@track.album) %></em>, <%= @album_year %>
 </h4>
 
-<div class="track-show">
-  <% @track.verses.each_with_index do |section, index| %>
-    <div class="well" style="display:none" data-verse-number="verse<%= index + 1 %>">
-      <% if @comments.where(verse: index + 1).length == 0 %>
-        <h4> No comments on this verse yet! </h4>
-      <% else %>
-        <h4> <%= pluralize(@comments.where(verse: index + 1).length, "Comment") %>:</h4>
-        <ul>
-          <% @comments.where(verse: index + 1).each do |comment| %>
-            <% if comment.user == nil %>
-              <li><%= "'#{comment.annotation}'<br>--<em>anonymous</em>, #{comment.created_at.strftime("%m/%d/%Y, %l:%M%P ")}".html_safe %></li>
-            <% else %>
-              <li><%= "'#{comment.annotation}'<br>--#{comment.user.nickname}, #{comment.created_at}".html_safe %></li>
-            <% end %>
-          <% end %>
-        <ul>
-      <% end %>
-      <br>
-      <button type="button" class="btn btn-default btn-sm close-comments">Close</button>
-    </div>
-  <% end %>
-</div>
-
+<%= render 'lyrics_container' %>
 <br>
-<div class="lyrics" id="lyrics-scroll">
-  <% @track.verses.each_with_index do |section, index| %>
-    <div class="lyric-section" data-verse-comments="verse<%= index + 1 %>" data-container="body" data-toggle="popover" data-html="true" data-target="#newCommentModal" data-placement="right" data-content="<b>Comments on section:</b> <%= @comments.where(verse: index + 1).length %><br> Click lyrics to comment">
-      <div class="text-primary" id="verse">
-        <%= section.html_safe %>
-      </div>
-    </div>
-  <% end %>
-</div>
-<!-- new_album_track_comment_path(@track.album, @track, verse: index + 1) -->
-<br>
+<%= render 'verse_comments' %>
+<%= render 'verse_modal' %>

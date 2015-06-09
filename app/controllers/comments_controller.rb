@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.track_id = Track.find(params[:track_id]).id
     if @comment.save
-      redirect_to album_track_path(@album, @comment.track_id)
+      redirect_to album_track_path(@album, @comment.track_id), alert: "Comment saved!"
     end
   end
 

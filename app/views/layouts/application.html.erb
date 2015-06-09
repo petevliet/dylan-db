@@ -35,6 +35,11 @@
   </div>
 </nav>
 <div class="container">
+  <% if flash[:alert] %>
+  <div class="alert alert-info" role="alert">
+    <center><%= alert %></center>
+  </div>
+<% end %>
   <%= yield %>
 </div>
   <div class="container">

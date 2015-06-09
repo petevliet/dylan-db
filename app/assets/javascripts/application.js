@@ -91,10 +91,12 @@ $(document).ready(function(){
     }, 1000);
   });
 
+  // album box images become active/opaque when hovered over
   $(".album-box").hover(
     function(){
       $(this).removeClass("panel-default");
       $(this).addClass("panel-info album-box-active");
+      // so buttons do not show shadow effect
       $($(this).find(".btn-xs")[0]).removeClass("btn-link");
       $($(this).find(".btn-xs")[0]).addClass("btn-info album-box-active-button");
       $($(this).find("img")).fadeTo(200, 1.0);
@@ -111,6 +113,7 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover()
   });
 
+  // individual tracks on album#show become blue when hovered over
   $(".list-group-item").hover(
     function(){
       $(this).addClass("active");
@@ -125,15 +128,18 @@ $(document).ready(function(){
     }
   );
 
+  // page scrolls to album info on page load
   $("#album-art").load(function(){
     $('html, body').animate({
       scrollTop: $(".breadcrumb").offset().top
     }, 1500);
   });
 
+  // on tracks#show, individual verses become active and highlighted when hovered over
   $(".lyric-section").hover(
     function(){
     if (!$(this).hasClass("active")){
+      // using jquery_color plugin
       $(this).animate({
         backgroundColor: "#E2F9FB",
         fontSize: "1.2em"
@@ -151,7 +157,9 @@ $(document).ready(function(){
     }
   );
 
+  // when verses are clicked on, they will retain a new color beyond hover
   $(".lyric-section").on("click", function(){
+    // if another verse has already been clicked, only newest clicked verse will be active
     var oldClickedVerse = $(".lyrics").find(".active");
     if (oldClickedVerse.length > 0){
       $(oldClickedVerse[0]).removeClass("active");
@@ -163,9 +171,10 @@ $(document).ready(function(){
     var clickedVerse = this;
     $(clickedVerse).addClass("active");
     $(clickedVerse).animate({
-      backgroundColor: "#FFC0BE",
+      backgroundColor: "#EEEEEE",
       fontSize: "1.2em"
     }, 100);
+    // if clicked verse data equals comment well data, show comment well
     $(".track-show .well").each(function(i, el){
       if ($(clickedVerse).data("verse-comments") == $(el).data("verse-number")){
         $(el).slideDown(200);
@@ -177,6 +186,21 @@ $(document).ready(function(){
 
   $(".close-comments").on("click", function(){
     $(".track-show .well").slideUp(100);
+  });
+
+  // when add new comment modal is opened
+  $('#newCommentModal').on('show.bs.modal', function (event) {
+    // so previously loaded verses dont get retained in modals
+    $(".verse-section").empty();
+    // place verse text in top portion on modal
+    var activeVerseElement = $("#lyrics-scroll").find(".active")[0];
+    var verseLyrics = $($(activeVerseElement).find("#verse")[0]).html();
+    $(".verse-section").append(verseLyrics);
+    // retrieve verse data so it can be placed into hidden rails form element
+    var button = $(event.relatedTarget);
+    var verseNum = $(button[0]).data('verse-number-comment');
+    var verseNumEntry = $(this).find("#verseNumEntry")[0];
+    $(verseNumEntry).val(verseNum);
   });
 
   function previous(){

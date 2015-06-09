@@ -1,0 +1,24 @@
+<div class="track-show">
+  <% @track.verses.each_with_index do |section, index| %>
+    <div class="well" style="display:none" data-verse-number="verse<%= index + 1 %>">
+      <% if @comments.where(verse: index + 1).length == 0 %>
+        <h4> No comments on this verse yet! </h4>
+      <% else %>
+        <h4> <%= pluralize(@comments.where(verse: index + 1).length, "Comment") %>:</h4>
+        <ul>
+          <% @comments.where(verse: index + 1).each do |comment| %>
+            <% if comment.user == nil %>
+              <li><%= "'#{comment.annotation}'<br>--<em>anonymous</em>, #{comment.created_at.strftime("%m/%d/%Y, %l:%M%P ")}".html_safe %></li>
+            <% else %>
+              <li><%= "'#{comment.annotation}'<br>--#{comment.user.nickname}, #{comment.created_at}".html_safe %></li>
+            <% end %>
+          <% end %>
+        <ul>
+      <% end %>
+      <br>
+      <br>
+      <button type="button" class="btn btn-primary btn-sm" data-verse-number-comment="<%= index + 1 %>" data-toggle="modal" data-target="#newCommentModal">Add comment</button>
+      <button type="button" class="btn btn-default btn-sm close-comments">Close</button>
+    </div>
+  <% end %>
+</div>

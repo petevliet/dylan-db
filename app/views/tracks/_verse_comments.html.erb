@@ -1,0 +1,9 @@
+<div class="lyrics" id="lyrics-scroll">
+  <% @track.verses.each_with_index do |section, index| %>
+    <div class="lyric-section" data-verse-comments="verse<%= index + 1 %>" data-container="body" data-toggle="popover" data-html="true" data-target="#newCommentModal" data-placement="right" data-content="<b>Comments on section:</b> <%= @comments.where(verse: index + 1).length %><br> Click lyrics to read and create comments">
+      <div class="text-primary" id="verse">
+        <%= section.html_safe %>
+      </div>
+    </div>
+  <% end %>
+</div>
