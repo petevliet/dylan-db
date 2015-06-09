@@ -19,6 +19,8 @@ class LyricsGrabber
         dylan_version << song
       end
     end
+    if dylan_version.length == 0
+    else
     lyrics_raw = dylan_version[0].response["lyrics"]["plain"]
     # replace newspace markup with close->open p tags so lyrics can be displayed properly
     # also, if there are chorus tags, put 'verse' in front of first one so upcoming verse split works properly
@@ -45,6 +47,6 @@ class LyricsGrabber
     track.lyrics.sub("[Verse Chorus]", "[Chorus]")
     track.save
   end
-
+end
 
 end

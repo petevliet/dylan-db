@@ -5,6 +5,9 @@ class TracksController < ApplicationController
     if @track.lyrics == nil
       @lyric_getter = LyricsGrabber.new
       @lyric_getter.get_lyrics(@track)
+      if @track.lyrics == nil
+        raise NotFound
+      end
     end
     @album_year = @track.album.release_date.strftime("%Y")
     @comments = Comment.where(track_id: @track.id)
