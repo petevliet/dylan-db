@@ -12,8 +12,7 @@
 <h4>
   From <em><%= link_to @track.album.title, album_path(@track.album) %></em>, <%= @album_year %>
 </h4>
-
-<%= render 'lyrics_container' %>
 <br>
-<%= render 'verse_comments' %>
+<%= render 'verse_lyrics' %>
+<%= render 'verses_comments' %>
 <%= render 'verse_modal' %>
