@@ -58,8 +58,32 @@ $(document).ready(function(){
       location.reload();
     };
     albumBoxes.hide();
+    if (checkedTypes.length > 0 && checkedYears.length > 0){
+      $(checkedTypes).each(function(i, type){
+        $(albumBoxes).each(function(i, el){
+          $($(el).data('types')).each(function(i, albumType){
+            if(albumType === $(type).val()){
+              // if album type matches selected checkbox type, make album visible
+              $(el).show();
+            }
+          });
+        });
+      });
+      var checkedTypesInYears = [];
+      $(checkedYears).each(function(i, years){
+        $(albumBoxes).filter(":visible").each(function(i, el){
+          if(parseInt($(el).data('year-released')) >= parseInt($(years).val()) && parseInt($(el).data('year-released')) < parseInt($(years).val()) + 10){
+            checkedTypesInYears.push(el);
+          }
+        });
+      });
+      albumBoxes.hide();
+      $(checkedTypesInYears).each(function(i, element){
+        $(element).show();
+      });
+    }
     // iterate through each selected album type checkbox, album, and album type and show if values match
-    if (checkedTypes.length > 0){
+    else if (checkedTypes.length > 0 && checkedYears.length === 0){
       $(checkedTypes).each(function(i, type){
         $(albumBoxes).each(function(i, el){
           $($(el).data('types')).each(function(i, albumType){
@@ -71,7 +95,7 @@ $(document).ready(function(){
         });
       });
     // for each checked box, iterate through each albumBox
-  } if (checkedYears.length > 0){
+  } else if (checkedYears.length > 0 && checkedTypes.length === 0){
       $(checkedYears).each(function(i, years){
         $(albumBoxes).each(function(i, el){
           // if album year falls within checkedBox range, make album visible
