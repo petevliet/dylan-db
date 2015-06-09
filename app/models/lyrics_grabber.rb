@@ -6,7 +6,7 @@ class LyricsGrabber
 
   def get_lyrics(track)
     # if title has tags that inhibit lyric api calls, remove them
-    if track.title.include?("Remastered" || "Live" || "Single")
+    if track.title.include?("Remastered") || track.title.include?("Live") || track.title.include?("Single")
       song_title = track.title.slice(/\A[^(]+/).strip
     else
       song_title = track.title
