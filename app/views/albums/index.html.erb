@@ -13,7 +13,7 @@
         data-types='<%= album.types %>' class="panel panel-default album-box">
         <div class="panel-heading"><center><%= link_to album.title, album_path(album), class: "btn btn-link btn-xs", style: "white-space: normal" %></center></div>
         <div class="panel-body">
-          <%= link_to(image_tag(album.image_url, size: "160x160", id: "album-index-art"), album_path(album)) %>
+          <%= link_to(image_tag(album.image_url, class: "album-index-art"), album_path(album)) %>
         </div>
       </div>
     <% end %>
