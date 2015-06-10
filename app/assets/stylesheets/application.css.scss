@@ -218,7 +218,8 @@
 }
 
 .background-album-cover img {
-  height: 500px;
+  height: 65%;
+  width: 65%;
   float: right;
 }
 
@@ -261,9 +262,6 @@ blockquote {
   padding-right: .25em;
   display: inline-block;
   cursor: pointer;
-}
-
-.letter-active {
 }
 
 .active-letter {
