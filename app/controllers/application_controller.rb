@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :current_user
 
-    # This error will be raised when non-admin users try to access another user's edit page
+  # This error will be raised when lyrics are not found by gem i.e., Dylan didn't write the song
   class NotFound < StandardError
   end
-  rescue_from NotFound, with: :not_found
+  rescue_from NoMethodError, with: :not_found
 
   def current_user
     if session[:user_id]
