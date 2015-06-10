@@ -7,7 +7,7 @@
     <% @alphabet_array.each_with_index do |letter_hash, index| %>
     <div class="list-group songbox" id="<%= @letters_array[index] %>">
         <% letter_hash.each do |track| %>
-        <div class="list-group-item songs">
+        <div class="list-group-item songs col-md-4">
             <% if track.album == nil %>
               <em><%= link_to track.title, album_track_path(3, track) %></em><br>
               &nbsp;&nbsp;&nbsp;&nbsp;from <em>Biograph</em>

@@ -20,7 +20,6 @@ class MusicGrabber
       new_dylan_album = Album.new
       new_dylan_album.title = new_album["title"]
       new_dylan_album.release_date = new_album["release_date"]
-      # new_dylan_album.tracks = new_album["tracks"].length
       new_dylan_album.album_num = new_album["id"]
       new_dylan_album.save
     end

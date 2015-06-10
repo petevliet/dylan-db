@@ -232,8 +232,23 @@ blockquote {
   height: 150px;
 }
 
-.list-group .songs {
-  width: 28%;
+.songs {
+  margin-top: 2px;
+  // width: 28%;
+  height: 75px;
+  float: left;
+  // display: inline-block;
+}
+
+.songs-collection {
+  width: 85%;
   float: right;
-  display: inline-block;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.songbox::before
+
+.songbox::after {
+  margin-bottom: 50px;
 }
