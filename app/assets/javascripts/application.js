@@ -267,18 +267,20 @@ $(document).ready(function(){
   );
 
   $(".letter-click").on("click", function(){
-    var previousSelected = $(".songbox").filter(":visible")[0]
-    var currentLetter = this.id;
-    var newBox = $(".songs-collection").find("#" + currentLetter)[0]
-    $(".active-letter").animate({opacity: 0}, 200, function(){
-      $(".active-letter").empty();
-      $(".active-letter").text(currentLetter).animate({opacity: 1}, 200);
-    });
-    $(".songbox").animate({opacity: 0}, 200, function(){
-      $(previousSelected).hide();
-      $(newBox).show();
-      $(newBox).animate({opacity: 1}, 200);
-    });
+    if (!(this.id === "X" || this.id === "Z")){
+      var previousSelected = $(".songbox").filter(":visible")[0]
+      var currentLetter = this.id;
+      var newBox = $(".songs-collection").find("#" + currentLetter)[0]
+      $(".active-letter").animate({opacity: 0}, 200, function(){
+        $(".active-letter").empty();
+        $(".active-letter").text(currentLetter).animate({opacity: 1}, 200);
+      });
+      $(".songbox").animate({opacity: 0}, 200, function(){
+        $(previousSelected).hide();
+        $(newBox).show();
+        $(newBox).animate({opacity: 1}, 200);
+      });
+    }
   });
 
   function previous(){
