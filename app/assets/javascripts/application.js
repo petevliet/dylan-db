@@ -138,7 +138,7 @@ $(document).ready(function(){
   });
 
   // individual tracks on album#show become blue when hovered over
-  $(".list-group-item").hover(
+  $(".album-track").hover(
     function(){
       $(this).addClass("active");
       $($(this).children()[0]).removeClass("btn-link");
@@ -232,6 +232,21 @@ $(document).ready(function(){
     var verseNumEntry = $(this).find("#verseNumEntry")[0];
     $(verseNumEntry).val(verseNum);
   });
+
+  // on tracks#index, individual song boxes become active and highlighted when hovered over
+  $(".songs").hover(
+    function(){
+      $(this).find("a")[0];
+      // using jquery_color plugin
+      $(this).animate({
+        backgroundColor: "#E2F9FB"
+      }, 50);
+    }, function(){
+        $(this).animate({
+          backgroundColor: "white"
+        }, 50);
+    }
+  );
 
   function previous(){
     if (!$("#previous").hasClass("disabled")){

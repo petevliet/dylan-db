@@ -20,7 +20,7 @@
   <div class="album-tracks">
     <div class="list-group">
         <% @album_tracks.each do |track| %>
-          <div class= "list-group-item"
+          <div class= "list-group-item album-track"
             data-container="body" data-toggle="popover" data-placement="right" data-content="Song Comments: <%= track.comments.count %>">
             <%= link_to track.title, album_track_path(@album, track), class: "btn btn-link", style: "white-space: normal; text-align: left" %>
           </div>

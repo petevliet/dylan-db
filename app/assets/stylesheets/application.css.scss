@@ -163,6 +163,13 @@
   background-size: cover;
 }
 
+.tracks-index {
+  height: 400px;
+  background-image: url("http://netstorage.metrolyrics.com/artists/hero/bob-dylan-52fe6be6-hero.jpg");
+  background-position: 50% 5%;
+  background-size: cover;
+}
+
 .album-tracks {
   margin-top: 25px;
   position: relative;
@@ -234,21 +241,13 @@ blockquote {
 
 .songs {
   margin-top: 2px;
-  // width: 28%;
   height: 75px;
   float: left;
-  // display: inline-block;
 }
 
 .songs-collection {
   width: 85%;
   float: right;
-  max-height: 500px;
+  max-height: 550px;
   overflow-y: scroll;
-}
-
-.songbox::before
-
-.songbox::after {
-  margin-bottom: 50px;
 }
