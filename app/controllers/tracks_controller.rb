@@ -34,7 +34,7 @@ class TracksController < ApplicationController
       raise NotFound
     end
     @album_year = @track.album.release_date.strftime("%Y")
-    @comments = Comment.where(track_id: @track.id)
+    @comments = Comment.where(track_id: @track.id).order(id: :desc)
     @comment = Comment.new
   end
 
