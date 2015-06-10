@@ -273,7 +273,7 @@ $(document).ready(function(){
       var newBox = $(".songs-collection").find("#" + currentLetter)[0]
       $(".active-letter").animate({opacity: 0}, 200, function(){
         $(".active-letter").empty();
-        $(".active-letter").text(currentLetter).animate({opacity: 1}, 200);
+        $(".active-letter").text(currentLetter).animate({opacity: 0.4}, 200);
       });
       $(".songbox").animate({opacity: 0}, 200, function(){
         $(previousSelected).hide();
