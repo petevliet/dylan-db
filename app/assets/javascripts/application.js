@@ -208,6 +208,7 @@ $(document).ready(function(){
     });
   });
 
+  // when close button is clicked on comments well, close well and deselect lyrics section
   $(".close-comments").on("click", function(){
     $(".track-show .well").slideUp(100);
     var clickedVerse = $(".lyrics").find(".active");
@@ -248,6 +249,7 @@ $(document).ready(function(){
     }
   );
 
+  // letters on tracks#index except for x and z which dont have songs, become big and white when hovered over
   $(".letter-click").hover(
     function(){
       if (!(this.id === "X" || this.id === "Z")){
@@ -266,6 +268,7 @@ $(document).ready(function(){
     }
   );
 
+  // when a letter is clicked on tracks#index, hide current letter's box and display selected letter's box, and fade in current letter
   $(".letter-click").on("click", function(){
     if (!(this.id === "X" || this.id === "Z")){
       var previousSelected = $(".songbox").filter(":visible")[0]
