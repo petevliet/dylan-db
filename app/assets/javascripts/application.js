@@ -248,6 +248,39 @@ $(document).ready(function(){
     }
   );
 
+  $(".letter-click").hover(
+    function(){
+      if (!(this.id === "X" || this.id === "Z")){
+      $(this).animate({
+        backgroundColor: "#6699FF",
+        fontSize: "2.5em",
+        color: "white"
+      }, 100);
+    }
+    }, function(){
+      $(this).animate({
+        backgroundColor: "white",
+        fontSize: "1.5em",
+        color: "black"
+      }, 100);
+    }
+  );
+
+  $(".letter-click").on("click", function(){
+    var previousSelected = $(".songbox").filter(":visible")[0]
+    var currentLetter = this.id;
+    var newBox = $(".songs-collection").find("#" + currentLetter)[0]
+    $(".active-letter").animate({opacity: 0}, 200, function(){
+      $(".active-letter").empty();
+      $(".active-letter").text(currentLetter).animate({opacity: 1}, 200);
+    });
+    $(".songbox").animate({opacity: 0}, 200, function(){
+      $(previousSelected).hide();
+      $(newBox).show();
+      $(newBox).animate({opacity: 1}, 200);
+    });
+  });
+
   function previous(){
     if (!$("#previous").hasClass("disabled")){
       new_page = parseInt($("#current_page").val()) - 1;

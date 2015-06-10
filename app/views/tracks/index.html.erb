@@ -1,14 +1,21 @@
 <div class="tracks-index">
 </div>
 <h1>Songs</h1>
-
-<% @letters_array.each do |letter| %>
-  <%= link_to letter, "#", class: "letterClick", id: letter %>
-<% end %>
+<br>
+<div class="song-title-letters">
+  <% @letters_array.each do |letter| %>
+    <div class="letter-click" id="<%= letter %>">
+      <%= letter %>
+    </div>
+  <% end %>
+</div>
 <hr>
+<div class="active-letter">
+  A
+</div>
 <div class="songs-collection">
   <% @alphabet_array.each_with_index do |letter_hash, index| %>
-  <% if index == 1 %>
+  <% if index == 0 %>
     <div class="list-group songbox" id="<%= @letters_array[index] %>">
   <% else %>
     <div class="list-group songbox" style="display:none" id="<%= @letters_array[index] %>">
