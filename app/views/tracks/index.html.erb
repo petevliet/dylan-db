@@ -3,12 +3,20 @@
 <% @letters_array.each do |letter| %>
   <%= link_to letter, "#", class: "letterClick", id: letter %>
 <% end %>
-
-<ul>
-  <% @letters_hash["A"].sort_by{|k,v| k["title"]}.each do |track| %>
-    <li>
-      <em><%= link_to track.title, album_track_path(track.album, track) %></em>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;from <em><%= track.album.title %></em>
-    </li>
-  <% end %>
-</ul>
+<div class="songs-collection">
+    <% @alphabet_array.each_with_index do |letter_hash, index| %>
+    <div class="list-group songbox" id="<%= @letters_array[index] %>">
+        <% letter_hash.each do |track| %>
+        <div class="list-group-item songs">
+            <% if track.album == nil %>
+              <em><%= link_to track.title, album_track_path(3, track) %></em><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;from <em>Biograph</em>
+            <% else %>
+              <em><%= link_to track.title, album_track_path(track.album, track) %></em><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;from <em><%= track.album.title %></em>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+</div>

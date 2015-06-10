@@ -18,7 +18,8 @@ gem 'beats-client'
 # to hide api keys
 gem 'dotenv-rails', :groups => [:development, :test]
 # for accessing lyrics
-gem "rapgenius", "~> 1.0.5"
+gem "rapgenius", "~> 1.1.0"
+gem "lyricfy"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

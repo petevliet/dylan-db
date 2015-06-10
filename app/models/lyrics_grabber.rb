@@ -1,52 +1,42 @@
 class LyricsGrabber
 
-  def initialize
-
+  def initialize()
+    @song_lyrics = Lyricfy::Fetcher.new
   end
 
-  def get_lyrics(track)
+  def find_lyrics(track)
     # if title has tags that inhibit lyric api calls, remove them
     if track.title.include?("Remastered") || track.title.include?("Live") || track.title.include?("Single")
       song_title = track.title.slice(/\A[^(]+/).strip
     else
       song_title = track.title
     end
-    songs = RapGenius.search_by_title(song_title)
-    # RapGenius query returns songs from different artists, make sure only Dylan's version shows
-    dylan_version = []
-    songs.each do |song|
-      if song.artist.name == "Bob Dylan"
-        dylan_version << song
-      end
-    end
-    if dylan_version.length == 0
-    else
-    lyrics_raw = dylan_version[0].response["lyrics"]["plain"]
+    response = @song_lyrics.search "bob dylan", song_title
+    lyrics_raw = response.body
     # replace newspace markup with close->open p tags so lyrics can be displayed properly
     # also, if there are chorus tags, put 'verse' in front of first one so upcoming verse split works properly
-    lyrics_html = lyrics_raw.split("\n").join("</p><p>").sub("[Chorus]", "[Verse Chorus]")
+    lyrics_html = lyrics_raw.split("\\n").join("</p><p>")
     track.lyrics = lyrics_html
     # split lyrics text into verses and save it in track.verses array
-    verse_split = lyrics_html.split("[Verse ")
-      verse_split.delete_if {|verse_element| verse_element.empty?}
-    verse_split.each do |verse|
-      if verse.match(/\A[0-9]/) != nil
-        verse.prepend("[Verse ")
-      else
-        verse.prepend("[")
-      end
-      track.verses << verse
-    end
-    # if lyrics include a tagged chorus, the first chorus' contents must be preserved while subsequent chorus tags removed from lyrics so lyrics can be properly commented upon.
-    # if track.lyrics.include?("Chorus]")
-    #   first_chorus_index = track.verses.index{|verse| verse.include?("Chorus")}
-    #   chorus = track.verses.slice!(first_chorus_index)
-    #   track.verses.each {|verse| verse.slice!("[Chorus]")}
-    #   track.verses.insert(first_chorus_index, chorus)
-    # end
-    track.lyrics.sub("[Verse Chorus]", "[Chorus]")
+    verse_split = lyrics_html.split("</p><p>")
+    verse_split.each {|verse| verse.prepend("<p>")}
+    verse_split.each {|verse| verse << "</p>" }
+    verses_count = (verse_split.length / 4) + 1
+    verses_count.times {|i| track.verses << verse_split.slice!(0,4)}
+    track.verses.map {|verse| verse.join("")}
+    track.verses.pop
+    # track.verses.flatten
     track.save
   end
-end
+#     verse_split.each do |verse|
+#       if verse.match(/\A[0-9]/) != nil
+#         verse.prepend("[Verse ")
+#       else
+#         verse.prepend("[")
+#       end
+#       track.verses << verse
+#     end
+#     track.save
+# end
 
 end

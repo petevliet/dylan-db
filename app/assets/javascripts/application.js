@@ -210,6 +210,12 @@ $(document).ready(function(){
 
   $(".close-comments").on("click", function(){
     $(".track-show .well").slideUp(100);
+    var clickedVerse = $(".lyrics").find(".active");
+    $(clickedVerse).removeClass("active");
+    $(clickedVerse).animate({
+      backgroundColor: "white",
+      fontSize: "1.1em"
+    }, 100);
   });
 
   // when add new comment modal is opened
