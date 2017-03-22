@@ -32,7 +32,12 @@ class MusicGrabber
           db_album.large_image_url = "https://c1.staticflickr.com/7/6155/6158417919_f8059f091c_b.jpg"
           db_album.save
           break
-        elsif spotify_album["name"].include? db_album.title || spotify_album["name"].downcase == db_album.title.downcase
+        elsif spotify_album["name"].include? db_album.title
+          db_album.image_url = spotify_album["images"][1]["url"]
+          db_album.large_image_url = spotify_album["images"][0]["url"]
+          db_album.save
+          break
+        elsif spotify_album["name"].downcase == db_album.title.downcase
           db_album.image_url = spotify_album["images"][1]["url"]
           db_album.large_image_url = spotify_album["images"][0]["url"]
           db_album.save
