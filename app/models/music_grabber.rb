@@ -38,6 +38,7 @@ class MusicGrabber
         elsif spotify_album["name"] == db_album.title
           db_album.image_url = spotify_album["images"][1]["url"]
           db_album.large_image_url = spotify_album["images"][0]["url"]
+          if db_album.title = "Planet Waves" {|planet_waves| p db_album}
           db_album.save
           break
         elsif spotify_album["name"].include? db_album.title
