@@ -35,8 +35,9 @@ gem 'bootstrap-sass', '~> 3.3.4'
 # Sign in with twitter
 gem 'omniauth'
 gem 'omniauth-twitter'
+# Use Puma as the app server
+gem 'puma'
 
-# Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
