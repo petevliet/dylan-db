@@ -29,6 +29,7 @@ class MusicGrabber
 
     spotify_dylan_collection["items"].each do |spotify_album|
       dylan_albums.each do |db_album|
+        p db_album
         if db_album.title == "Bob Dylan's Greatest Hits, Vol.2" || db_album.title == "Biograph" || db_album.title == "Greatest Hits, Vol.3" || db_album.title == "Dylan (Deluxe)"
           db_album.image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Bob_Dylan_Barcelona.jpg/360px-Bob_Dylan_Barcelona.jpg"
           db_album.large_image_url = "https://c1.staticflickr.com/7/6155/6158417919_f8059f091c_b.jpg"
