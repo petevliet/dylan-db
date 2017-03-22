@@ -33,7 +33,7 @@ class MusicGrabber
         if db_album.title == "Bob Dylan's Greatest Hits, Vol.2" || db_album.title == "Biograph" || db_album.title == "Greatest Hits, Vol.3" || db_album.title == "Dylan (Deluxe)"
           db_album.image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Bob_Dylan_Barcelona.jpg/360px-Bob_Dylan_Barcelona.jpg"
           db_album.large_image_url = "https://c1.staticflickr.com/7/6155/6158417919_f8059f091c_b.jpg"
-          db_album.save
+          db_album.save!
           break
         elsif spotify_album["name"] == db_album.title
           db_album.image_url = spotify_album["images"][1]["url"]
@@ -42,12 +42,13 @@ class MusicGrabber
             p "PLANET WAVES IS HEREERERERERERERE"
             p db_album
           end
-          db_album.save
+          db_album.save!
+          p db_album
           break
         elsif spotify_album["name"].include? db_album.title
           db_album.image_url = spotify_album["images"][1]["url"]
           db_album.large_image_url = spotify_album["images"][0]["url"]
-          db_album.save
+          db_album.save!
           break
         end
       end
