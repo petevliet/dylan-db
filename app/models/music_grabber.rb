@@ -12,23 +12,14 @@ class MusicGrabber
   def get_art_from_spotify
     dylan_albums = Album.all
 
-    # response = @spotify_collection.get do |req|
-    #   req.url "v1/artists/74ASZWbe4lXaubB36ztrGX/albums?limit=50"
-    # end
-
     response = @spotify_collection.get do |req|
-      req.url "v1/artists/74ASZWbe4lXaubB36ztrGX/albums?offset=18&limit=50"
+      req.url "v1/artists/74ASZWbe4lXaubB36ztrGX/albums"
     end
-    # parsed_second_response = JSON.parse(second_response.body)
-    # parsed_second_response["items"].each do |album|
-    #   spotify_dylan_collection["items"].push(album)
-    # end
 
     spotify_dylan_collection = JSON.parse(response.body)
 
 
     spotify_dylan_collection["items"].each do |spotify_album|
-      p spotify_album
       dylan_albums.each do |db_album|
         if db_album.title == "Bob Dylan's Greatest Hits, Vol.2" || db_album.title == "Biograph" || db_album.title == "Greatest Hits, Vol.3" || db_album.title == "Dylan (Deluxe)"
           db_album.image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Bob_Dylan_Barcelona.jpg/360px-Bob_Dylan_Barcelona.jpg"
@@ -38,7 +29,6 @@ class MusicGrabber
           db_album.image_url = spotify_album["images"][1]["url"]
           db_album.large_image_url = spotify_album["images"][0]["url"]
           db_album.save!
-          p db_album
         elsif spotify_album["name"].include? db_album.title
           db_album.image_url = spotify_album["images"][1]["url"]
           db_album.large_image_url = spotify_album["images"][0]["url"]
