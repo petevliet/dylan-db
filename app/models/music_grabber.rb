@@ -12,18 +12,20 @@ class MusicGrabber
   def get_art_from_spotify
     dylan_albums = Album.all
 
+    # response = @spotify_collection.get do |req|
+    #   req.url "v1/artists/74ASZWbe4lXaubB36ztrGX/albums?limit=50"
+    # end
+
     response = @spotify_collection.get do |req|
-      req.url "v1/artists/74ASZWbe4lXaubB36ztrGX/albums?limit=50"
+      req.url "v1/artists/74ASZWbe4lXaubB36ztrGX/albums?offset=18"
     end
+    # parsed_second_response = JSON.parse(second_response.body)
+    # parsed_second_response["items"].each do |album|
+    #   spotify_dylan_collection["items"].push(album)
+    # end
+
     spotify_dylan_collection = JSON.parse(response.body)
 
-    second_response = @spotify_collection.get do |req|
-      req.url "v1/artists/74ASZWbe4lXaubB36ztrGX/albums?offset=50"
-    end
-    parsed_second_response = JSON.parse(second_response.body)
-    parsed_second_response["items"].each do |album|
-      spotify_dylan_collection["items"].push(album)
-    end
 
     spotify_dylan_collection["items"].each do |spotify_album|
       dylan_albums.each do |db_album|
