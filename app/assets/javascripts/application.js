@@ -152,13 +152,6 @@ $(document).ready(function(){
     }
   );
 
-  // page scrolls to album info on page load
-  $("#album-art").load(function(){
-    $('html, body').animate({
-      scrollTop: $(".breadcrumb").offset().top
-    }, 1500);
-  });
-
   // on tracks#show, individual verses become active and highlighted when hovered over
   $(".lyric-section").hover(
     function(){
