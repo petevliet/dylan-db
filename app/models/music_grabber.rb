@@ -28,6 +28,7 @@ class MusicGrabber
 
 
     spotify_dylan_collection["items"].each do |spotify_album|
+      p spotify_album
       dylan_albums.each do |db_album|
         p db_album
         if db_album.title == "Bob Dylan's Greatest Hits, Vol.2" || db_album.title == "Biograph" || db_album.title == "Greatest Hits, Vol.3" || db_album.title == "Dylan (Deluxe)"
