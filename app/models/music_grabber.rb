@@ -17,7 +17,7 @@ class MusicGrabber
     # end
 
     response = @spotify_collection.get do |req|
-      req.url "v1/artists/74ASZWbe4lXaubB36ztrGX/albums?offset=18"
+      req.url "v1/artists/74ASZWbe4lXaubB36ztrGX/albums?offset=18&limit=50"
     end
     # parsed_second_response = JSON.parse(second_response.body)
     # parsed_second_response["items"].each do |album|
@@ -39,6 +39,7 @@ class MusicGrabber
           db_album.image_url = spotify_album["images"][1]["url"]
           db_album.large_image_url = spotify_album["images"][0]["url"]
           if db_album.title = "Planet Waves"
+            p "PLANET WAVES IS HEREERERERERERERE"
             p db_album
           end
           db_album.save
