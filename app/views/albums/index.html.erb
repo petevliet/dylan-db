@@ -1,12 +1,17 @@
-<h1>Albums</h1>
+<div class="hidden-xs">
+  <h1>Albums</h1>
+</div>
+<div class="visible-xs small-h1">
+  <h1>Albums</h1>
+</div>
 <input type="hidden" id="current_page" />
 <input type="hidden" id="show_per_page" />
-<div class="albums-index">
+<div class="albums-index hidden-xs">
 </div>
 
 <%= render 'sorting_box.html.erb' %>
 
-<div class="well-albums-container"><a id="albums"></a>
+<div class="well-albums-container hidden-xs"><a id="albums"></a>
   <div class="well well-albums-index">
     <% @albums.each do |album| %>
       <div data-year-released="<%= album.release_date.strftime('%Y') %>"
@@ -28,3 +33,19 @@
     <li id="next"><a href="#">»</a></li>
   </ul>
 </div>
+
+<div class="well-albums-container-small visible-xs"><a id="albums"></a>
+  <div class="well well-albums-index-small">
+    <div class="list-group">
+      <% @albums.each do |album| %>
+        <%= link_to album_path(album), class: "list-group-item", data: {
+           year_released: album.release_date.strftime('%Y'),
+           types: album.types } do %>
+          <em><%= album.title %></em>, <%= album.release_date.strftime('%Y') %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'sorting_box_small.html.erb' %>

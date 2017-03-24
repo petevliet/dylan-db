@@ -102,6 +102,59 @@ $(document).ready(function(){
     }, 1000);
   });
 
+  $("#narrow-search-small").on("click", function(){
+    var checkedYears = $("#years-small").find(":checkbox").filter(":checked");
+    var checkedTypes = $("#types-small").find(":checkbox").filter(":checked");
+    var albumBoxes = $($(".well-albums-index-small").children()[0]).children();;
+
+    if (checkedYears.length === 0 && checkedTypes.length === 0){
+      location.reload();
+    };
+    albumBoxes.hide();
+    if (checkedTypes.length > 0 && checkedYears.length > 0){
+      $(checkedTypes).each(function(i, type){
+        $(albumBoxes).each(function(i, el){
+          $($(el).data('types')).each(function(i, albumType){
+            if(albumType === $(type).val()){
+              $(el).show();
+            }
+          });
+        });
+      });
+      var checkedTypesInYears = [];
+      $(checkedYears).each(function(i, years){
+        $(albumBoxes).filter(":visible").each(function(i, el){
+          if(parseInt($(el).data('year-released')) >= parseInt($(years).val()) && parseInt($(el).data('year-released')) < parseInt($(years).val()) + 10){
+            checkedTypesInYears.push(el);
+          }
+        });
+      });
+      albumBoxes.hide();
+      $(checkedTypesInYears).each(function(i, element){
+        $(element).show();
+      });
+    }
+    else if (checkedTypes.length > 0 && checkedYears.length === 0){
+      $(checkedTypes).each(function(i, type){
+        $(albumBoxes).each(function(i, el){
+          $($(el).data('types')).each(function(i, albumType){
+            if(albumType === $(type).val()){
+              $(el).show();
+            }
+          });
+        });
+      });
+  } else if (checkedYears.length > 0 && checkedTypes.length === 0){
+      $(checkedYears).each(function(i, years){
+        $(albumBoxes).each(function(i, el){
+          if(parseInt($(el).data('year-released')) >= parseInt($(years).val()) && parseInt($(el).data('year-released')) < parseInt($(years).val()) + 10){
+            $(el).show();
+          }
+        });
+      });
+    }
+  });
+
   $(".album-box").hover(
     function(){
       $(this).removeClass("panel-default");
