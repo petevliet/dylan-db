@@ -1,6 +1,6 @@
 <%= render 'album_image_logic' %>
 
-<div class="row">
+<div class="row hidden-xs">
   <div class="col-md-12">
     <ul class="breadcrumb">
       <li><%= link_to 'Home', root_path %></li>
@@ -9,12 +9,18 @@
     </ul>
   </div>
 </div>
+<div class="hidden-xs">
 <h2><em><%= @album.title %></em>, <%= @year %></h2>
+</div>
+<div class="visible-xs">
+  <h4><em><%= @album.title %></em>, <%= @year %></h4>
+  <%= image_tag(@album.image_url, class: "album-show-small") %>
+</div>
 <br>
 
 <%= render 'album_info_accordions' %>
 
-<div class="album-info col-xs-4">
+<div class="album-info col-md-4 col-xs-12">
   <br>
   <%= @album.tracks.count %> Songs:
   <div class="album-tracks">
@@ -28,7 +34,7 @@
     </div>
   </div>
 </div>
-<div class="background-album-cover">
+<div class="background-album-cover hidden-xs">
   <div class="col-md-8">
     <img src="<%= @album.large_image_url %>" id="album-art">
   </div>

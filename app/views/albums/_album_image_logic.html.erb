@@ -1,18 +1,20 @@
-<% if @album.types.include?("live") %>
-  <div class="album-show-live">
-<% elsif @year <= 1964 %>
-  <div class="album-show-1965">
-<% elsif @year > 1964 && @year < 1967 %>
-  <div class="album-show-1966">
-<% elsif @year > 1966 && @year < 1976 %>
-  <div class="album-show-1967">
-<% elsif @year > 1975 && @year < 1979 %>
-  <div class="album-show-1976">
-<% elsif @year > 1978 && @year < 1984 %>
-  <div class="album-show-1979">
-<% elsif @year > 1983 && @year < 2000 %>
-  <div class="album-show-1984">
-<% elsif @year >= 2000 %>
-  <div class="album-show-2000">
-<% end %>
-  </div>
+<div class="hidden-xs">
+  <% if @album.types.include?("live") %>
+    <div class="album-show-live">
+  <% elsif @year <= 1964 %>
+    <div class="album-show-1965">
+  <% elsif @year > 1964 && @year < 1967 %>
+    <div class="album-show-1966">
+  <% elsif @year > 1966 && @year < 1976 %>
+    <div class="album-show-1967">
+  <% elsif @year > 1975 && @year < 1979 %>
+    <div class="album-show-1976">
+  <% elsif @year > 1978 && @year < 1984 %>
+    <div class="album-show-1979">
+  <% elsif @year > 1983 && @year < 2000 %>
+    <div class="album-show-1984">
+  <% elsif @year >= 2000 %>
+    <div class="album-show-2000">
+  <% end %>
+    </div>
+</div>
