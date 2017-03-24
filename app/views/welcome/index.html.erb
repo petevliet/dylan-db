@@ -1,10 +1,10 @@
-<section class="module parallax parallax-1">
+<section class="module parallax parallax-1 hidden-xs">
   <div class="container">
     <h1>Dylan Database</h1>
   </div>
 </section>
 
-<section class="module content">
+<section class="module content hidden-xs">
   <div class="container">
     <div class="well well-lg well-welcome">
       <h1>You're very well read, it's well known</h1>
@@ -21,4 +21,23 @@
         <%= link_to 'Albums', albums_path, class: 'btn btn-default' %>&nbsp;&nbsp;&nbsp;&nbsp;
         <%= link_to 'Songs', tracks_path, class: 'btn btn-default' %>
   </div>
+</section>
+
+<section class="module parallax-small parallax-1 visible-xs">
+  <div class="container">
+    <h2>Dylan Database</h2>
+    <div class="well well-welcome">
+      <h5>You're very well read, it's well known</h5>
+      <hr>
+          Collection and discussion of the 20th century's greatest singer-songwriter's lyrics
+          <br>
+          <br>
+          <% if @current_user == nil %>
+            <%= link_to "Sign in with Twitter", "/auth/twitter" %> to join the conversation
+          <% end %>
+        <br>
+        <%= link_to 'Albums', albums_path, class: 'btn btn-default' %>&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to 'Songs', tracks_path, class: 'btn btn-default' %>
+  </div>
+</div>
 </section>

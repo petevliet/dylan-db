@@ -24,9 +24,23 @@
    background-size: cover;
    margin-bottom: 50px;
  }
+ section.module.parallax-small {
+   height: 450px;
+   background-position: 50% 80%;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   margin-bottom: 20px;
+ }
  section.module.parallax h1 {
    color: white;
    line-height: 800px;
+   text-align: center;
+   text-shadow: 0 0 10px #090808;
+ }
+ section.module.parallax-small h2 {
+   color: white;
+   line-height: 150px;
    text-align: center;
    text-shadow: 0 0 10px #090808;
  }
