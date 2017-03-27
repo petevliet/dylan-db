@@ -1,6 +1,23 @@
-<div class="lyrics col-xs-6" id="lyrics-scroll">
+<div class="lyrics col-md-6 hidden-xs" id="lyrics-scroll">
   <% @track.verses.each_with_index do |section, index| %>
     <div class="lyric-section" data-verse-comments="verse<%= index + 1 %>" data-container="body" data-toggle="popover" data-html="true" data-target="#newCommentModal" data-placement="right" data-content="<b>Comments on section:</b> <%= @comments.where(verse: index + 1).length %><br> Click lyrics to read and create comments">
+      <div class="text-primary" id="verse">
+        <% if section.kind_of?(String) %>
+          <%= section.html_safe %>
+        <% else %>
+          <% section.each do |line| %>
+            <%= line.html_safe %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <br>
+  <% end %>
+</div>
+
+<div class="lyrics col-xs-10 visible-xs" id="lyrics-scroll">
+    <% @track.verses.each_with_index do |section, index| %>
+    <div class="lyric-section-small" data-verse-comments="verse<%= index + 1 %>" data-container="body" data-html="true" data-toggle="modal" data-target="#smallViewCommentsModal">
       <div class="text-primary" id="verse">
         <% if section.kind_of?(String) %>
           <%= section.html_safe %>

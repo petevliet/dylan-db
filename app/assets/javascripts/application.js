@@ -233,6 +233,18 @@ $(document).ready(function(){
     });
   });
 
+  $(".lyric-section-small").on("click", function(){
+    var clickedVerse = this;
+
+    $("#smallViewCommentsModal .well").each(function(i, el){
+      if ($(clickedVerse).data("verse-comments") == $(el).data("verse-number")){
+        $(el).show();
+      }else{
+        $(el).hide();
+      };
+    });
+  });
+
   $(".close-comments").on("click", function(){
     $(".track-show .well").slideUp(100);
     var clickedVerse = $(".lyrics").find(".active");

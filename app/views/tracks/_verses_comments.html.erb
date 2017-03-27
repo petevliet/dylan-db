@@ -1,4 +1,4 @@
-<div class="track-show">
+<div class="track-show hidden-xs">
   <% @track.verses.each_with_index do |section, index| %>
     <div class="well" style="display:none" data-verse-number="verse<%= index + 1 %>">
       <% if @comments.where(verse: index + 1).length == 0 %>

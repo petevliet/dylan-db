@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row hidden-xs">
   <div class="col-md-12">
     <ul class="breadcrumb">
       <li><%= link_to 'Home', root_path %></li>
@@ -8,7 +8,12 @@
     </ul>
   </div>
 </div>
-<h1><em><%= @track.title %></em></h1>
+<div class="hidden-xs">
+  <h1><em><%= @track.title %></em></h1>
+</div>
+<div class="visible-xs">
+  <h3><em><%= @track.title %></em></h3>
+</div>
 <h4>
   From <em><%= link_to @track.album.title, album_path(@track.album) %></em>, <%= @album_year %>
 </h4>
