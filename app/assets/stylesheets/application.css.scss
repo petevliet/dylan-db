@@ -318,3 +318,22 @@ blockquote {
   opacity: 0.4;
   color: #6699FF;
 }
+
+@media (max-width: 767px) {
+  .active-letter {
+    font-size: 6em;
+  }
+  .songs {
+    float: right;
+    width: 80%;
+  }
+  .songs-collection {
+    // width: 70%;
+    float: right;
+    max-height: 350px;
+    overflow-y: scroll;
+  }
+  h2 {
+    margin-top: 0;
+  }
+}
