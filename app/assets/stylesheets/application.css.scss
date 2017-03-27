@@ -337,3 +337,10 @@ blockquote {
     margin-top: 0;
   }
 }
+
+@media (max-width: 991px) {
+  .track-show {
+    width: 30%;
+    background-image: none;
+  }
+}
